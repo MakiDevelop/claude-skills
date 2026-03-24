@@ -44,6 +44,8 @@ except ImportError:
 
 ### Step 2: 讀取 Schema
 
+#### SQLite
+
 ```bash
 python3 << 'PYEOF'
 import sqlite3, json, sys
@@ -65,13 +67,37 @@ for name, ddl in tables:
     print(f"\n-- Table: {name}")
     print(ddl)
     # Sample data (前 3 行)
-    sample = conn.execute(f"SELECT * FROM [{name}] LIMIT 3").fetchall()
-    cols = [d[0] for d in conn.execute(f"SELECT * FROM [{name}] LIMIT 0").description]
+    sample = conn.execute(f'SELECT * FROM "{name}" LIMIT 3').fetchall()
+    cols = [d[0] for d in conn.execute(f'SELECT * FROM "{name}" LIMIT 0').description]
     print(f"-- Columns: {cols}")
     print(f"-- Sample ({len(sample)} rows): {sample[:2]}")
-    # Row count
-    count = conn.execute(f"SELECT COUNT(*) FROM [{name}]").fetchone()[0]
-    print(f"-- Total rows: {count}")
+
+conn.close()
+PYEOF
+```
+
+#### DuckDB
+
+```bash
+python3 << 'PYEOF'
+import sys
+try:
+    import duckdb
+except ImportError:
+    print("ERROR: pip3 install duckdb")
+    sys.exit(1)
+
+DB_PATH = "USER_DB_PATH"
+conn = duckdb.connect(DB_PATH, read_only=True)
+
+tables = conn.execute("SHOW TABLES").fetchall()
+for (name,) in tables:
+    print(f"\n-- Table: {name}")
+    ddl = conn.execute(f'DESCRIBE "{name}"').fetchall()
+    for col_name, col_type, *_ in ddl:
+        print(f"--   {col_name}: {col_type}")
+    sample = conn.execute(f'SELECT * FROM "{name}" LIMIT 3').fetchall()
+    print(f"-- Sample: {sample[:2]}")
 
 conn.close()
 PYEOF
@@ -85,9 +111,9 @@ PYEOF
 
 **轉換規則：**
 - 使用與 DB 類型對應的 SQL 方言（SQLite vs DuckDB）
-- 只產生 SELECT 語句
+- **只產生單一 SELECT 或 WITH...SELECT 語句**（禁止多 statement）
 - 自動加上 `LIMIT 100`（除非用戶明確要全部）
-- 欄位名用 `[bracket]` 包裹避免保留字衝突
+- 欄位名用雙引號 `"column"` 包裹避免保留字衝突（SQLite 和 DuckDB 通用）
 
 **展示 SQL 給用戶確認後才執行。**
 
@@ -95,33 +121,53 @@ PYEOF
 
 ```bash
 python3 << 'PYEOF'
-import sqlite3, sys, re, signal
+import sqlite3, sys, re
 
 DB_PATH = "USER_DB_PATH"
+DB_TYPE = "sqlite"  # or "duckdb"
 SQL = """USER_SQL_HERE"""
 
 # === 安全檢查 ===
 
-# 1. 阻擋危險語句
-dangerous = re.compile(r'(?i)\b(DROP|DELETE|UPDATE|INSERT|ALTER|ATTACH|DETACH|PRAGMA\s+(?!table_info|database_list))\b')
-if dangerous.search(SQL):
-    print("BLOCKED: Only SELECT queries are allowed.", file=sys.stderr)
+# 1. 禁止多 statement（分號只能出現在結尾）
+sql_stripped = SQL.strip().rstrip(';')
+if ';' in sql_stripped:
+    print("BLOCKED: Multiple statements not allowed.", file=sys.stderr)
     sys.exit(1)
 
-# 2. 強制 LIMIT
+# 2. 首 token 必須是 SELECT 或 WITH
+first_token = sql_stripped.split()[0].upper() if sql_stripped.split() else ""
+if first_token not in ("SELECT", "WITH"):
+    print(f"BLOCKED: Only SELECT/WITH queries allowed (got: {first_token}).", file=sys.stderr)
+    sys.exit(1)
+
+# 3. 阻擋危險關鍵字（即使在子查詢中）
+dangerous = re.compile(
+    r'(?i)\b(DROP|DELETE|UPDATE|INSERT|ALTER|ATTACH|DETACH|CREATE|VACUUM|ANALYZE|REINDEX|PRAGMA)\b'
+)
+if dangerous.search(SQL):
+    print("BLOCKED: Dangerous keyword detected.", file=sys.stderr)
+    sys.exit(1)
+
+# 4. 強制 LIMIT
 if not re.search(r'(?i)\bLIMIT\b', SQL):
-    SQL = f"{SQL.rstrip(';')} LIMIT 100;"
-
-# 3. Timeout (30 秒)
-def timeout_handler(signum, frame):
-    raise TimeoutError("Query exceeded 30 second timeout")
-
-signal.signal(signal.SIGALRM, timeout_handler)
-signal.alarm(30)
+    SQL = f"{sql_stripped} LIMIT 100;"
 
 # === 執行 ===
+conn = None
 try:
-    conn = sqlite3.connect(f"file:{DB_PATH}?mode=ro", uri=True)
+    if DB_TYPE == "sqlite":
+        conn = sqlite3.connect(f"file:{DB_PATH}?mode=ro", uri=True)
+        # 額外防護：用 authorizer 阻擋非 SELECT 操作
+        def authorizer(action, arg1, arg2, db_name, trigger):
+            ALLOWED = {sqlite3.SQLITE_SELECT, sqlite3.SQLITE_READ,
+                       sqlite3.SQLITE_FUNCTION, sqlite3.SQLITE_RECURSIVE}
+            return sqlite3.SQLITE_OK if action in ALLOWED else sqlite3.SQLITE_DENY
+        conn.set_authorizer(authorizer)
+    else:
+        import duckdb
+        conn = duckdb.connect(DB_PATH, read_only=True)
+
     cursor = conn.execute(SQL)
     columns = [d[0] for d in cursor.description]
     rows = cursor.fetchall()
@@ -134,15 +180,12 @@ try:
 
     print(f"\n({len(rows)} rows returned)")
 
-except TimeoutError:
-    print("ERROR: Query timeout (>30s). Try a more specific query.", file=sys.stderr)
-    sys.exit(1)
 except Exception as e:
     print(f"ERROR: {e}", file=sys.stderr)
     sys.exit(1)
 finally:
-    signal.alarm(0)
-    conn.close()
+    if conn is not None:
+        conn.close()
 PYEOF
 ```
 
@@ -160,9 +203,11 @@ PYEOF
 | 防線 | 說明 |
 |------|------|
 | **Read-only 連線** | SQLite `?mode=ro`、DuckDB `read_only=True` |
-| **語句過濾** | Regex 阻擋 DROP/DELETE/UPDATE/INSERT/ALTER/ATTACH |
+| **首 token 檢查** | 只允許 SELECT / WITH 開頭 |
+| **多 statement 阻擋** | 禁止分號分隔的多語句 |
+| **危險關鍵字過濾** | DROP/DELETE/UPDATE/INSERT/ALTER/CREATE/ATTACH/PRAGMA 等 |
+| **SQLite authorizer** | `set_authorizer()` 在 opcode 層阻擋非 SELECT 操作 |
 | **強制 LIMIT** | 沒有 LIMIT 的查詢自動加 `LIMIT 100` |
-| **Timeout** | 30 秒超時自動中斷 |
 | **用戶確認** | SQL 執行前展示給用戶確認 |
 
 ## DuckDB 支援

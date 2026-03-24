@@ -43,9 +43,13 @@ from datetime import datetime
 
 FILE_PATH = "USER_FILE_PATH"
 
-with open(FILE_PATH, 'r', encoding='utf-8') as f:
-    dialect = csv.Sniffer().sniff(f.read(4096))
+with open(FILE_PATH, 'r', encoding='utf-8-sig', newline='') as f:
+    sample_text = f.read(4096)
     f.seek(0)
+    try:
+        dialect = csv.Sniffer().sniff(sample_text)
+    except csv.Error:
+        dialect = csv.excel if ',' in sample_text else csv.excel_tab
     reader = csv.DictReader(f, dialect=dialect)
     rows = list(reader)
 
@@ -141,15 +145,20 @@ TITLE = "USER_TITLE"
 OUTPUT = "/tmp/chart.png"
 
 # --- 讀取資料 ---
-with open(FILE_PATH, 'r', encoding='utf-8') as f:
-    dialect = csv.Sniffer().sniff(f.read(4096))
+with open(FILE_PATH, 'r', encoding='utf-8-sig', newline='') as f:
+    sample_text = f.read(4096)
     f.seek(0)
+    try:
+        dialect = csv.Sniffer().sniff(sample_text)
+    except csv.Error:
+        dialect = csv.excel if ',' in sample_text else csv.excel_tab
     reader = csv.DictReader(f, dialect=dialect)
     rows = list(reader)
 
 # 限制行數防止卡死
 if len(rows) > 5000:
-    step = len(rows) // 5000
+    import math
+    step = math.ceil(len(rows) / 5000)
     rows = rows[::step]
     print(f"Downsampled to {len(rows)} rows")
 
@@ -189,6 +198,16 @@ elif CHART_TYPE == "bar":
 
 elif CHART_TYPE == "pie":
     y_data = [parse_val(r[Y_COLS[0]]) or 0 for r in rows]
+    if sum(y_data) == 0:
+        print("ERROR: All values are 0, cannot create pie chart.", file=sys.stderr)
+        sys.exit(1)
+    # 超過 10 個類別時聚合為 top 10 + Others
+    if len(y_data) > 10:
+        pairs = sorted(zip(x_data, y_data), key=lambda p: p[1], reverse=True)
+        top = pairs[:9]
+        others_sum = sum(v for _, v in pairs[9:])
+        x_data = [p[0] for p in top] + ["Others"]
+        y_data = [p[1] for p in top] + [others_sum]
     ax.pie(y_data, labels=x_data, autopct='%1.1f%%')
 
 elif CHART_TYPE == "scatter":
