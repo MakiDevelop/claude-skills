@@ -1,0 +1,240 @@
+{
+  "version": "1.0",
+  "generated_at": "2026-03-24T04:21:45.621316+00:00",
+  "skill_count": 11,
+  "skills": [
+    {
+      "name": "case-study",
+      "description": "專案案例包裝。把真實專案包裝成面試/LinkedIn 用的結構化案例（問題→方案→架構→Tech Stack→成果→展示重點）。當用戶說「包裝案例」「寫 case study」「面試用的案例」時使用。",
+      "version": "1.0.0",
+      "author": "Maki",
+      "tags": [
+        "career",
+        "interview",
+        "linkedin",
+        "writing"
+      ],
+      "required_env": [],
+      "required_bins": [],
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ],
+      "safety_level": "safe",
+      "path": "skills/case-study/SKILL.md"
+    },
+    {
+      "name": "csv-to-chart",
+      "description": "把 CSV/TSV 資料自動生成圖表（line/bar/pie/scatter）。當用戶說「畫圖表」「csv 圖表」「chart」「visualize data」時使用。",
+      "version": "1.0.0",
+      "author": "Maki",
+      "tags": [
+        "data",
+        "visualization",
+        "chart",
+        "csv"
+      ],
+      "required_env": [],
+      "required_bins": [],
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ],
+      "safety_level": "safe",
+      "path": "skills/csv-to-chart/SKILL.md"
+    },
+    {
+      "name": "db-eda",
+      "description": "用自然語言查詢 SQLite 或 DuckDB 資料庫。當用戶說「查資料庫」「SQL 查詢」「db eda」「自然語言查 DB」時使用。",
+      "version": "1.0.0",
+      "author": "Maki",
+      "tags": [
+        "database",
+        "sqlite",
+        "duckdb",
+        "eda",
+        "data"
+      ],
+      "required_env": [],
+      "required_bins": [],
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ],
+      "safety_level": "safe",
+      "path": "skills/db-eda/SKILL.md"
+    },
+    {
+      "name": "demo-storytelling",
+      "description": "把 PoC / prototype 包裝成有說服力的 demo 故事。輸入技術成果/受眾/數據，輸出 demo 腳本 + 一頁摘要 + FAQ。當用戶要展示成果、準備 demo、報告 PoC 時使用。",
+      "version": "1.0.0",
+      "author": "Maki",
+      "tags": [
+        "presentation",
+        "demo",
+        "storytelling",
+        "career"
+      ],
+      "required_env": [],
+      "required_bins": [],
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ],
+      "safety_level": "safe",
+      "path": "skills/demo-storytelling/SKILL.md"
+    },
+    {
+      "name": "disk-cleanup",
+      "description": "macOS 磁碟清理。掃描大目錄、分類可刪/可搬/需確認、Docker/Xcode 清理。當用戶說「清磁碟」「磁碟空間不夠」「disk cleanup」時使用。",
+      "version": "1.0.0",
+      "author": "Maki",
+      "tags": [
+        "macos",
+        "devtools",
+        "cleanup",
+        "disk"
+      ],
+      "required_env": [],
+      "required_bins": [],
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ],
+      "safety_level": "safe",
+      "path": "skills/disk-cleanup/SKILL.md"
+    },
+    {
+      "name": "generate-image",
+      "description": "使用 Gemini Nano Banana 2 產生圖片。當用戶說「產圖」「生成圖片」「generate image」「畫一張圖」時使用。",
+      "version": "1.0.0",
+      "author": "Maki",
+      "tags": [
+        "image",
+        "gemini",
+        "ai"
+      ],
+      "required_env": [
+        "GEMINI_API_KEY"
+      ],
+      "required_bins": [],
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ],
+      "safety_level": "safe",
+      "path": "skills/generate-image/SKILL.md"
+    },
+    {
+      "name": "gh-issue-to-spec",
+      "description": "把 GitHub Issue 轉成結構化技術規格文件。當用戶說「issue 轉 spec」「寫規格」「gh issue to spec」時使用。",
+      "version": "1.0.0",
+      "author": "Maki",
+      "tags": [
+        "github",
+        "spec",
+        "documentation",
+        "development"
+      ],
+      "required_env": [],
+      "required_bins": [],
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ],
+      "safety_level": "safe",
+      "path": "skills/gh-issue-to-spec/SKILL.md"
+    },
+    {
+      "name": "pdf-to-summary",
+      "description": "讀取 PDF 檔案，產出結構化摘要。當用戶說「摘要 PDF」「summarize PDF」「PDF 重點」「讀這份 PDF」時使用。",
+      "version": "1.0.0",
+      "author": "Maki",
+      "tags": [
+        "pdf",
+        "summary",
+        "documentation",
+        "reading"
+      ],
+      "required_env": [],
+      "required_bins": [],
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ],
+      "safety_level": "safe",
+      "path": "skills/pdf-to-summary/SKILL.md"
+    },
+    {
+      "name": "postmortem",
+      "description": "事故記錄。收集資訊、分析 root cause、記錄修復步驟、防止再發。當服務出事故後使用。",
+      "version": "1.0.0",
+      "author": "Maki",
+      "tags": [
+        "devops",
+        "incident",
+        "debugging",
+        "documentation"
+      ],
+      "required_env": [],
+      "required_bins": [],
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ],
+      "safety_level": "safe",
+      "path": "skills/postmortem/SKILL.md"
+    },
+    {
+      "name": "product-positioning",
+      "description": "定位產品/功能的市場位置和溝通策略。輸入產品描述/目標用戶/競品，輸出 positioning statement + one-liner + elevator pitch + landing page 骨架。當用戶要介紹產品、寫 README、準備 pitch 時使用。",
+      "version": "1.0.0",
+      "author": "Maki",
+      "tags": [
+        "product",
+        "marketing",
+        "positioning",
+        "pitch"
+      ],
+      "required_env": [],
+      "required_bins": [],
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ],
+      "safety_level": "safe",
+      "path": "skills/product-positioning/SKILL.md"
+    },
+    {
+      "name": "proposal-review",
+      "description": "提案簡報結構審查。分析分頁邏輯、標題長度、內容分配，給出合併/拆分/精簡建議。當用戶說「review 這份提案」「簡報結構對不對」「幫我看一下分頁」時使用。",
+      "version": "1.0.0",
+      "author": "Maki",
+      "tags": [
+        "presentation",
+        "review",
+        "proposal",
+        "pptx"
+      ],
+      "required_env": [],
+      "required_bins": [],
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ],
+      "safety_level": "safe",
+      "path": "skills/proposal-review/SKILL.md"
+    }
+  ]
+}

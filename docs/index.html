@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Skills Catalog</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+       background: #0a0a0a; color: #e0e0e0; padding: 2rem; max-width: 1200px; margin: 0 auto; }
+h1 { font-size: 2rem; margin-bottom: 0.5rem; color: #fff; }
+.subtitle { color: #888; margin-bottom: 2rem; }
+.stats { color: #666; font-size: 0.85rem; margin-bottom: 2rem; }
+h2.cat { font-size: 1.2rem; color: #aaa; margin: 2rem 0 1rem; border-bottom: 1px solid #222; padding-bottom: 0.5rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1rem; }
+.card { background: #151515; border: 1px solid #252525; border-radius: 8px; padding: 1.2rem;
+         transition: border-color 0.2s; }
+.card:hover { border-color: #444; }
+.card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+.card h3 a { color: #58a6ff; text-decoration: none; }
+.card h3 a:hover { text-decoration: underline; }
+.ver { font-size: 0.75rem; color: #555; font-weight: normal; }
+.card p { font-size: 0.9rem; color: #aaa; margin-bottom: 0.8rem; line-height: 1.4; }
+.meta { margin-bottom: 0.5rem; }
+.tag { display: inline-block; font-size: 0.7rem; background: #1a2332; color: #58a6ff;
+        padding: 2px 8px; border-radius: 12px; margin: 2px 2px; }
+.env { font-size: 0.8rem; color: #d29922; margin-bottom: 0.5rem; }
+code { display: block; font-size: 0.8rem; background: #1a1a1a; color: #7ee787; padding: 6px 10px;
+        border-radius: 4px; font-family: 'SF Mono', Consolas, monospace; }
+.install { background: #151515; border: 1px solid #252525; border-radius: 8px; padding: 1.5rem;
+            margin-bottom: 2rem; }
+.install h2 { font-size: 1rem; margin-bottom: 0.8rem; color: #fff; }
+.install code { margin-bottom: 0.5rem; }
+footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #222; color: #555; font-size: 0.8rem; }
+</style>
+</head>
+<body>
+<h1>Claude Skills</h1>
+<p class="subtitle">可重用的 Claude CLI 技能包分享平台</p>
+<p class="stats">11 skills | Generated 2026-03-24</p>
+
+<div class="install">
+<h2>Quick Install</h2>
+<code>git clone https://github.com/MakiDevelop/claude-skills.git ~/.claude/repos/claude-skills</code>
+<code>~/.claude/repos/claude-skills/tools/install.sh install --all</code>
+</div>
+
+<h2 class="cat">AI / 圖像生成</h2>
+<div class="grid">
+<div class="card">
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/generate-image/SKILL.md">generate-image</a> <span class="ver">v1.0.0</span></h3>
+  <p>使用 Gemini Nano Banana 2 產生圖片。</p>
+  <div class="meta"><span class="tag">image</span> <span class="tag">gemini</span> <span class="tag">ai</span></div>
+  <div class="env">需要: GEMINI_API_KEY</div>
+  <code>install.sh install generate-image</code>
+</div>
+</div>
+<h2 class="cat">資料分析</h2>
+<div class="grid">
+<div class="card">
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/csv-to-chart/SKILL.md">csv-to-chart</a> <span class="ver">v1.0.0</span></h3>
+  <p>把 CSV/TSV 資料自動生成圖表（line/bar/pie/scatter）。</p>
+  <div class="meta"><span class="tag">data</span> <span class="tag">visualization</span> <span class="tag">chart</span> <span class="tag">csv</span></div>
+  
+  <code>install.sh install csv-to-chart</code>
+</div>
+<div class="card">
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/db-eda/SKILL.md">db-eda</a> <span class="ver">v1.0.0</span></h3>
+  <p>用自然語言查詢 SQLite 或 DuckDB 資料庫。</p>
+  <div class="meta"><span class="tag">database</span> <span class="tag">sqlite</span> <span class="tag">duckdb</span> <span class="tag">eda</span> <span class="tag">data</span></div>
+  
+  <code>install.sh install db-eda</code>
+</div>
+<div class="card">
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/pdf-to-summary/SKILL.md">pdf-to-summary</a> <span class="ver">v1.0.0</span></h3>
+  <p>讀取 PDF 檔案，產出結構化摘要。</p>
+  <div class="meta"><span class="tag">pdf</span> <span class="tag">summary</span> <span class="tag">documentation</span> <span class="tag">reading</span></div>
+  
+  <code>install.sh install pdf-to-summary</code>
+</div>
+</div>
+<h2 class="cat">開發工具</h2>
+<div class="grid">
+<div class="card">
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/gh-issue-to-spec/SKILL.md">gh-issue-to-spec</a> <span class="ver">v1.0.0</span></h3>
+  <p>把 GitHub Issue 轉成結構化技術規格文件。</p>
+  <div class="meta"><span class="tag">github</span> <span class="tag">spec</span> <span class="tag">documentation</span> <span class="tag">development</span></div>
+  
+  <code>install.sh install gh-issue-to-spec</code>
+</div>
+<div class="card">
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/postmortem/SKILL.md">postmortem</a> <span class="ver">v1.0.0</span></h3>
+  <p>事故記錄。</p>
+  <div class="meta"><span class="tag">devops</span> <span class="tag">incident</span> <span class="tag">debugging</span> <span class="tag">documentation</span></div>
+  
+  <code>install.sh install postmortem</code>
+</div>
+</div>
+<h2 class="cat">職涯 / 溝通</h2>
+<div class="grid">
+<div class="card">
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/case-study/SKILL.md">case-study</a> <span class="ver">v1.0.0</span></h3>
+  <p>專案案例包裝。</p>
+  <div class="meta"><span class="tag">career</span> <span class="tag">interview</span> <span class="tag">linkedin</span> <span class="tag">writing</span></div>
+  
+  <code>install.sh install case-study</code>
+</div>
+<div class="card">
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/demo-storytelling/SKILL.md">demo-storytelling</a> <span class="ver">v1.0.0</span></h3>
+  <p>把 PoC / prototype 包裝成有說服力的 demo 故事。</p>
+  <div class="meta"><span class="tag">presentation</span> <span class="tag">demo</span> <span class="tag">storytelling</span> <span class="tag">career</span></div>
+  
+  <code>install.sh install demo-storytelling</code>
+</div>
+<div class="card">
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/product-positioning/SKILL.md">product-positioning</a> <span class="ver">v1.0.0</span></h3>
+  <p>定位產品/功能的市場位置和溝通策略。</p>
+  <div class="meta"><span class="tag">product</span> <span class="tag">marketing</span> <span class="tag">positioning</span> <span class="tag">pitch</span></div>
+  
+  <code>install.sh install product-positioning</code>
+</div>
+<div class="card">
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/proposal-review/SKILL.md">proposal-review</a> <span class="ver">v1.0.0</span></h3>
+  <p>提案簡報結構審查。</p>
+  <div class="meta"><span class="tag">presentation</span> <span class="tag">review</span> <span class="tag">proposal</span> <span class="tag">pptx</span></div>
+  
+  <code>install.sh install proposal-review</code>
+</div>
+</div>
+<h2 class="cat">系統維護</h2>
+<div class="grid">
+<div class="card">
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/disk-cleanup/SKILL.md">disk-cleanup</a> <span class="ver">v1.0.0</span></h3>
+  <p>macOS 磁碟清理。</p>
+  <div class="meta"><span class="tag">macos</span> <span class="tag">devtools</span> <span class="tag">cleanup</span> <span class="tag">disk</span></div>
+  
+  <code>install.sh install disk-cleanup</code>
+</div>
+</div>
+
+
+<footer>
+<a href="https://github.com/MakiDevelop/claude-skills" style="color:#58a6ff">GitHub</a> ·
+<a href="https://github.com/MakiDevelop/claude-skills/blob/main/docs/CONTRIBUTING.md" style="color:#58a6ff">Contribute</a> ·
+MIT License
+</footer>
+</body>
+</html>
