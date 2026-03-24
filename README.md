@@ -35,6 +35,21 @@ git clone https://github.com/MakiDevelop/claude-skills.git ~/.claude/repos/claud
 |-------|------|---------------|
 | [generate-image](skills/generate-image/) | 使用 Gemini Nano Banana 2 產生圖片 | `GEMINI_API_KEY` |
 
+### 資料分析
+
+| Skill | 說明 | 需要的環境變數 |
+|-------|------|---------------|
+| [csv-to-chart](skills/csv-to-chart/) | CSV/TSV → 自動圖表（line/bar/pie/scatter） | — |
+| [db-eda](skills/db-eda/) | 自然語言查 SQLite / DuckDB（read-only） | — |
+| [pdf-to-summary](skills/pdf-to-summary/) | PDF → 結構化摘要（帶頁碼標註） | — |
+
+### 開發工具
+
+| Skill | 說明 | 需要的環境變數 |
+|-------|------|---------------|
+| [gh-issue-to-spec](skills/gh-issue-to-spec/) | GitHub Issue → 技術規格文件 | — |
+| [postmortem](skills/postmortem/) | 事故記錄 + root cause 分析 + 防止再發 | — |
+
 ### 職涯 / 溝通
 
 | Skill | 說明 | 需要的環境變數 |
@@ -42,13 +57,12 @@ git clone https://github.com/MakiDevelop/claude-skills.git ~/.claude/repos/claud
 | [case-study](skills/case-study/) | 專案案例包裝（面試 / LinkedIn / 作品集） | — |
 | [demo-storytelling](skills/demo-storytelling/) | PoC 包裝成有說服力的 demo 故事 | — |
 | [product-positioning](skills/product-positioning/) | 產品市場定位 + pitch 策略 | — |
+| [proposal-review](skills/proposal-review/) | 提案簡報結構審查（分頁/標題/內容分配） | — |
 
-### DevOps / 工具
+### 系統維護
 
 | Skill | 說明 | 需要的環境變數 |
 |-------|------|---------------|
-| [postmortem](skills/postmortem/) | 事故記錄 + root cause 分析 + 防止再發 | — |
-| [proposal-review](skills/proposal-review/) | 提案簡報結構審查（分頁/標題/內容分配） | — |
 | [disk-cleanup](skills/disk-cleanup/) | macOS 磁碟清理（Docker/Xcode/venv/cache） | — |
 
 ## 目錄結構
