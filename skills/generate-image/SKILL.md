@@ -90,7 +90,7 @@ API_KEY = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY") o
 # --- 設定 ---
 PROMPT = """USER_PROMPT_HERE"""
 OUTPUT_PATH = "/tmp/generated-image.png"
-MODEL = "gemini-2.0-flash-exp"  # Nano Banana 2（原生圖像生成）
+MODEL = "gemini-3.1-flash-image-preview"  # Gemini 圖像生成（穩定版）
 
 # --- 呼叫 Gemini API ---
 url = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent?key={API_KEY}"
@@ -179,10 +179,10 @@ cp /tmp/generated-image.png "{TARGET_PATH}"
 
 ## 可用模型
 
-| 模型 ID | 代號 | 特性 |
-|---------|------|------|
-| `gemini-2.0-flash-exp` | Nano Banana 2（預設） | 原生圖像生成，速度快，品質好 |
-| `gemini-2.0-flash-preview-image-generation` | Nano Banana 2 Preview | 備用，同系列 |
+| 模型 ID | 特性 |
+|---------|------|
+| `gemini-3.1-flash-image-preview`（預設） | 最新圖像生成，品質好 |
+| `gemini-2.0-flash-preview-image-generation` | 備用（舊版） |
 
 > 模型 ID 可能隨 Google 更新而變動。如果遇到 404 錯誤，請查閱
 > https://ai.google.dev/gemini-api/docs/image-generation 確認最新模型 ID。
