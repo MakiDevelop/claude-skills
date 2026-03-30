@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-03-30T10:00:00.000000+00:00",
+  "generated_at": "2026-03-30T11:35:32.004630+00:00",
   "skill_count": 14,
   "skills": [
     {
@@ -47,7 +47,7 @@
     },
     {
       "name": "cv-optimize",
-      "description": "Resume/CV optimization. Reads PDF/Markdown/DOCX resume, analyzes issues, repositions strengths, and produces an optimized PDF. Optionally tailors to a target role or company.",
+      "description": "Resume/CV optimization. Analyze a resume, reposition strengths, and produce an optimized PDF tailored to a target role.",
       "version": "1.0.0",
       "author": "Maki",
       "tags": [
@@ -261,7 +261,7 @@
     },
     {
       "name": "roundtable",
-      "description": "Virtual expert roundtable. Input any document (architecture, product spec, proposal), and 3-4 thinkers independently analyze it, then cross-synthesize into consensus/disagreements/blind spots/emergent insights.",
+      "description": "Virtual expert roundtable. Multiple thinkers analyze a document with different frameworks, then synthesize consensus/disagreements/blind spots.",
       "version": "1.0.0",
       "author": "Maki",
       "tags": [
@@ -282,7 +282,7 @@
     },
     {
       "name": "vendor-eval",
-      "description": "Vendor proposal evaluation. Read a vendor proposal (PDF/Doc), analyze technical architecture, pricing reasonableness, and market benchmarks. Output structured evaluation report + comparison sheet.",
+      "description": "Vendor proposal evaluation. Analyze technical architecture, pricing, and market benchmarks from a proposal PDF/Doc. Output evaluation report + comparison.",
       "version": "1.0.0",
       "author": "Maki",
       "tags": [
