@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "generated_at": "2026-03-25T05:44:59.102402+00:00",
-  "skill_count": 11,
+  "generated_at": "2026-03-30T10:00:00.000000+00:00",
+  "skill_count": 14,
   "skills": [
     {
       "name": "case-study",
@@ -44,6 +44,29 @@
       ],
       "safety_level": "safe",
       "path": "skills/csv-to-chart/SKILL.md"
+    },
+    {
+      "name": "cv-optimize",
+      "description": "Resume/CV optimization. Reads PDF/Markdown/DOCX resume, analyzes issues, repositions strengths, and produces an optimized PDF. Optionally tailors to a target role or company.",
+      "version": "1.0.0",
+      "author": "Maki",
+      "tags": [
+        "career",
+        "resume",
+        "cv",
+        "job-search",
+        "pdf"
+      ],
+      "required_env": [],
+      "required_bins": [
+        "uv"
+      ],
+      "platforms": [
+        "macos",
+        "linux"
+      ],
+      "safety_level": "safe",
+      "path": "skills/cv-optimize/SKILL.md"
     },
     {
       "name": "db-eda",
@@ -235,6 +258,49 @@
       ],
       "safety_level": "safe",
       "path": "skills/proposal-review/SKILL.md"
+    },
+    {
+      "name": "roundtable",
+      "description": "Virtual expert roundtable. Input any document (architecture, product spec, proposal), and 3-4 thinkers independently analyze it, then cross-synthesize into consensus/disagreements/blind spots/emergent insights.",
+      "version": "1.0.0",
+      "author": "Maki",
+      "tags": [
+        "analysis",
+        "decision-making",
+        "strategy",
+        "multi-perspective"
+      ],
+      "required_env": [],
+      "required_bins": [],
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ],
+      "safety_level": "safe",
+      "path": "skills/roundtable/SKILL.md"
+    },
+    {
+      "name": "vendor-eval",
+      "description": "Vendor proposal evaluation. Read a vendor proposal (PDF/Doc), analyze technical architecture, pricing reasonableness, and market benchmarks. Output structured evaluation report + comparison sheet.",
+      "version": "1.0.0",
+      "author": "Maki",
+      "tags": [
+        "business",
+        "procurement",
+        "vendor",
+        "evaluation",
+        "analysis"
+      ],
+      "required_env": [],
+      "required_bins": [],
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ],
+      "safety_level": "safe",
+      "path": "skills/vendor-eval/SKILL.md"
     }
   ]
 }
