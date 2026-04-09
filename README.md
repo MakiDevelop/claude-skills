@@ -1,108 +1,118 @@
 # Claude Skills
 
-可重用的 Claude CLI 技能包（Skills）分享平台。
+> Power-ups for Claude Code.
 
-## 快速開始
+![Validate Skills](https://github.com/MakiDevelop/claude-skills/actions/workflows/validate.yml/badge.svg)
+![Skills: 14](https://img.shields.io/badge/skills-14-blue)
+![License: MIT](https://img.shields.io/badge/license-MIT-green)
 
-### 安裝全部 Skills
+Reusable skill packs for **[Claude Code](https://claude.ai/claude-code)** CLI. Install once, use everywhere — from data analysis to image generation to career tools.
+
+## Quickstart
+
+### Install all skills
 
 ```bash
 git clone https://github.com/MakiDevelop/claude-skills.git ~/.claude/repos/claude-skills
 ~/.claude/repos/claude-skills/tools/install.sh install --all
 ```
 
-### 安裝單一 Skill
+### Install a single skill
 
 ```bash
-# 如果還沒 clone
+# Clone first (if not already)
 git clone https://github.com/MakiDevelop/claude-skills.git ~/.claude/repos/claude-skills
 
-# 安裝指定 skill
+# Install a specific skill
 ~/.claude/repos/claude-skills/tools/install.sh install generate-image
 ```
 
-### 更新 Skills
+### Update
 
 ```bash
 ~/.claude/repos/claude-skills/tools/install.sh update
 ```
 
-## Skills 清單
+## Available Skills (14)
 
-### AI / 圖像生成
+### AI / Image Generation
 
-| Skill | 說明 | 需要的環境變數 |
-|-------|------|---------------|
-| [generate-image](skills/generate-image/) | 使用 Gemini Nano Banana 2 產生圖片 | `GEMINI_API_KEY` |
+| Skill | Description | Env Vars |
+|-------|-------------|----------|
+| [generate-image](skills/generate-image/) | Generate images with Gemini Nano Banana 2 | `GEMINI_API_KEY` |
 
-### 資料分析
+### Data Analysis
 
-| Skill | 說明 | 需要的環境變數 |
-|-------|------|---------------|
-| [csv-to-chart](skills/csv-to-chart/) | CSV/TSV → 自動圖表（line/bar/pie/scatter） | — |
-| [db-eda](skills/db-eda/) | 自然語言查 SQLite / DuckDB（read-only） | — |
-| [pdf-to-summary](skills/pdf-to-summary/) | PDF → 結構化摘要（帶頁碼標註） | — |
+| Skill | Description | Env Vars |
+|-------|-------------|----------|
+| [csv-to-chart](skills/csv-to-chart/) | CSV/TSV → auto chart (line/bar/pie/scatter) | — |
+| [db-eda](skills/db-eda/) | Natural language queries for SQLite / DuckDB (read-only) | — |
+| [pdf-to-summary](skills/pdf-to-summary/) | PDF → structured summary with page references | — |
 
-### 開發工具
+### Developer Tools
 
-| Skill | 說明 | 需要的環境變數 |
-|-------|------|---------------|
-| [gh-issue-to-spec](skills/gh-issue-to-spec/) | GitHub Issue → 技術規格文件 | — |
-| [postmortem](skills/postmortem/) | 事故記錄 + root cause 分析 + 防止再發 | — |
+| Skill | Description | Env Vars |
+|-------|-------------|----------|
+| [gh-issue-to-spec](skills/gh-issue-to-spec/) | GitHub Issue → technical spec document | — |
+| [postmortem](skills/postmortem/) | Incident report + root cause analysis + prevention | — |
 
-### 職涯 / 溝通
+### Strategy & Communication
 
-| Skill | 說明 | 需要的環境變數 |
-|-------|------|---------------|
-| [case-study](skills/case-study/) | 專案案例包裝（面試 / LinkedIn / 作品集） | — |
-| [demo-storytelling](skills/demo-storytelling/) | PoC 包裝成有說服力的 demo 故事 | — |
-| [product-positioning](skills/product-positioning/) | 產品市場定位 + pitch 策略 | — |
-| [proposal-review](skills/proposal-review/) | 提案簡報結構審查（分頁/標題/內容分配） | — |
+| Skill | Description | Env Vars |
+|-------|-------------|----------|
+| [case-study](skills/case-study/) | Package projects into case studies (interview/LinkedIn/portfolio) | — |
+| [cv-optimize](skills/cv-optimize/) | Resume optimization with targeted positioning | — |
+| [demo-storytelling](skills/demo-storytelling/) | Turn PoC into a compelling demo story | — |
+| [product-positioning](skills/product-positioning/) | Product market positioning + pitch strategy | — |
+| [proposal-review](skills/proposal-review/) | Presentation structure review (slides/titles/content balance) | — |
+| [roundtable](skills/roundtable/) | Virtual expert roundtable — multiple thinkers analyze your document | — |
+| [vendor-eval](skills/vendor-eval/) | Vendor proposal evaluation (tech/cost/market/background) | — |
 
-### 系統維護
+### System Maintenance
 
-| Skill | 說明 | 需要的環境變數 |
-|-------|------|---------------|
-| [disk-cleanup](skills/disk-cleanup/) | macOS 磁碟清理（Docker/Xcode/venv/cache） | — |
+| Skill | Description | Env Vars |
+|-------|-------------|----------|
+| [disk-cleanup](skills/disk-cleanup/) | macOS disk cleanup (Docker/Xcode/venv/cache) | — |
 
-## 目錄結構
+## How it works
+
+Each skill is a single `SKILL.md` file with YAML frontmatter defining metadata, required tools, and the skill logic itself. The installer creates symlinks in your `~/.claude/commands/` directory.
 
 ```
-claude-skills/
-├── skills/                 # 所有 skills（一個目錄一個 skill）
-│   └── generate-image/
-│       └── SKILL.md
-├── tools/
-│   └── install.sh          # 安裝/更新/移除腳本
-├── docs/
-│   ├── CONTRIBUTING.md     # 如何貢獻新 skill
-│   └── SKILL_TEMPLATE.md   # Skill 範本
-└── README.md
+skills/
+└── generate-image/
+    └── SKILL.md          # Frontmatter + skill logic
+
+tools/
+├── install.sh            # Install / update / remove
+├── validate.py           # CI validation
+├── build_registry.py     # Auto-generate registry.json
+└── build_site.py         # Auto-generate catalog site
 ```
 
-## 貢獻新 Skill
+CI automatically validates all skills on push and rebuilds the registry.
 
-1. Fork 本 repo
-2. 在 `skills/` 下建立新目錄，包含 `SKILL.md`
-3. 遵循 [Skill 範本](docs/SKILL_TEMPLATE.md) 的 frontmatter 格式
-4. 提交 PR，至少一人 review
+## Contributing
 
-詳見 [CONTRIBUTING.md](docs/CONTRIBUTING.md)。
+1. Fork this repo
+2. Create a new directory under `skills/` with a `SKILL.md`
+3. Follow the [Skill Template](docs/SKILL_TEMPLATE.md) format
+4. Submit a PR
 
-## Skill Frontmatter 規範
+See [CONTRIBUTING.md](docs/CONTRIBUTING.md) for details.
 
-每個 `SKILL.md` 的 YAML frontmatter 必須包含：
+## Skill Frontmatter Spec
 
 ```yaml
 ---
-name: skill-name              # 唯一識別碼（同目錄名）
-description: 一行描述          # 用途說明 + 觸發關鍵字
-argument-hint: "[參數說明]"    # 可選參數提示
-allowed-tools: Bash(...), Read # 需要的工具權限
-author: your-name              # 作者
-version: "1.0.0"               # 語意化版本
-tags: [image, gemini]          # 分類標籤
-required_env:                  # 需要的環境變數（空陣列表示無）
+name: skill-name              # Unique ID (same as directory name)
+description: One-line desc    # Purpose + trigger keywords
+argument-hint: "[args]"       # Optional argument hint
+allowed-tools: Bash(...), Read # Required tool permissions
+author: your-name
+version: "1.0.0"
+tags: [image, gemini]
+required_env:
   - GEMINI_API_KEY
 ---
 ```
