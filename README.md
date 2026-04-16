@@ -3,7 +3,7 @@
 > Power-ups for Claude Code.
 
 ![Validate Skills](https://github.com/MakiDevelop/claude-skills/actions/workflows/validate.yml/badge.svg)
-![Skills: 14](https://img.shields.io/badge/skills-14-blue)
+![Skills: 16](https://img.shields.io/badge/skills-16-blue)
 ![License: MIT](https://img.shields.io/badge/license-MIT-green)
 
 Reusable skill packs for **[Claude Code](https://claude.ai/claude-code)** CLI. Install once, use everywhere — from data analysis to image generation to career tools.
@@ -33,7 +33,7 @@ git clone https://github.com/MakiDevelop/claude-skills.git ~/.claude/repos/claud
 ~/.claude/repos/claude-skills/tools/install.sh update
 ```
 
-## Available Skills (14)
+## Available Skills (16)
 
 ### AI / Image Generation
 
@@ -55,6 +55,13 @@ git clone https://github.com/MakiDevelop/claude-skills.git ~/.claude/repos/claud
 |-------|-------------|----------|
 | [gh-issue-to-spec](skills/gh-issue-to-spec/) | GitHub Issue → technical spec document | — |
 | [postmortem](skills/postmortem/) | Incident report + root cause analysis + prevention | — |
+
+### Diagrams / Documentation
+
+| Skill | Description | Env Vars |
+|-------|-------------|----------|
+| [drawio](skills/drawio/) | Generate .drawio files (editable) with optional PNG/SVG/PDF export | — |
+| [architecture-diagram](skills/architecture-diagram/) | Self-contained HTML architecture diagrams (inline SVG, dark theme) for blogs/READMEs | — |
 
 ### Strategy & Communication
 

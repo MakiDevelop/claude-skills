@@ -1,8 +1,31 @@
 {
   "version": "1.0",
-  "generated_at": "2026-04-16T03:07:12.119963+00:00",
-  "skill_count": 14,
+  "generated_at": "2026-04-16T03:18:04.840167+00:00",
+  "skill_count": 16,
   "skills": [
+    {
+      "name": "architecture-diagram",
+      "description": "Generate self-contained HTML architecture diagrams (inline SVG, dark theme, no JS) for blogs/READMEs. Triggers on system architecture, microservices, cloud/AWS/GCP, K8s, network topology, data flow diagrams. Use `drawio` instead when the output needs to be editable.",
+      "version": "1.1.0",
+      "author": "Cocoon AI (adapted by Maki)",
+      "tags": [
+        "diagram",
+        "architecture",
+        "svg",
+        "html",
+        "blog",
+        "documentation"
+      ],
+      "required_env": [],
+      "required_bins": [],
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ],
+      "safety_level": "safe",
+      "path": "skills/architecture-diagram/SKILL.md"
+    },
     {
       "name": "case-study",
       "description": "專案案例包裝。把真實專案包裝成面試/LinkedIn 用的結構化案例（問題→方案→架構→Tech Stack→成果→展示重點）。當用戶說「包裝案例」「寫 case study」「面試用的案例」時使用。",
@@ -131,6 +154,31 @@
       ],
       "safety_level": "safe",
       "path": "skills/disk-cleanup/SKILL.md"
+    },
+    {
+      "name": "drawio",
+      "description": "Generate draw.io diagrams (.drawio files) with optional PNG/SVG/PDF export. Triggers on diagram/flowchart/ER/sequence/class/network/architecture/wireframe/mockup/UI sketch requests.",
+      "version": "1.0.0",
+      "author": "Maki",
+      "tags": [
+        "diagram",
+        "drawio",
+        "visualization",
+        "documentation",
+        "svg",
+        "png"
+      ],
+      "required_env": [],
+      "required_bins": [
+        "drawio"
+      ],
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ],
+      "safety_level": "safe",
+      "path": "skills/drawio/SKILL.md"
     },
     {
       "name": "generate-image",

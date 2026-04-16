@@ -1,0 +1,82 @@
+{
+  "_note": "Product brand colors for inline SVG badges. Use with circle badge + abbreviation pattern. Ported from fireworks-tech-graph (MIT) 2026-04-14.",
+  "_template": {
+    "badge": "<circle cx='cx' cy='cy' r='22' fill='${color}'/><text x='cx' y='cy+5' text-anchor='middle' fill='white' font-size='10' font-weight='700'>${badge}</text>",
+    "ring_for_ai": "<circle cx='cx' cy='cy' r='24' fill='none' stroke='${color}' stroke-width='1' opacity='0.4'/>"
+  },
+  "ai_ml": {
+    "openai":      { "color": "#10A37F", "badge": "OAI" },
+    "anthropic":   { "color": "#D97757", "badge": "Claude" },
+    "gemini":      { "color": "#4285F4", "badge": "Gemini" },
+    "llama":       { "color": "#0467DF", "badge": "LLaMA" },
+    "mistral":     { "color": "#FF7000", "badge": "Mistral" },
+    "cohere":      { "color": "#39594D", "badge": "Cohere" },
+    "groq":        { "color": "#F55036", "badge": "Groq" },
+    "together":    { "color": "#6366F1", "badge": "Together" },
+    "replicate":   { "color": "#191919", "badge": "Rep" },
+    "huggingface": { "color": "#FFD21E", "badge": "HF", "text_dark": true }
+  },
+  "agent_frameworks": {
+    "mem0":       { "color": "#6366F1", "badge": "mem0" },
+    "langchain":  { "color": "#1C3C3C", "badge": "LC" },
+    "llamaindex": { "color": "#8B5CF6", "badge": "LI" },
+    "langgraph":  { "color": "#1C3C3C", "badge": "LG" },
+    "crewai":     { "color": "#EF4444", "badge": "Crew" },
+    "autogen":    { "color": "#0078D4", "badge": "AG" },
+    "haystack":   { "color": "#FF6D00", "badge": "HS" },
+    "dspy":       { "color": "#7C3AED", "badge": "DSPy" }
+  },
+  "vector_db": {
+    "pinecone": { "color": "#1C1C2E", "badge": "Pine",   "accent": "#00C39A" },
+    "weaviate": { "color": "#FA0050", "badge": "Wea" },
+    "qdrant":   { "color": "#DC244C", "badge": "Qdrant" },
+    "chroma":   { "color": "#FF6B35", "badge": "Chr" },
+    "milvus":   { "color": "#00A1EA", "badge": "Milvus" },
+    "pgvector": { "color": "#336791", "badge": "pgv" },
+    "faiss":    { "color": "#0467DF", "badge": "FAISS" }
+  },
+  "database": {
+    "postgres":      { "color": "#336791", "badge": "PG" },
+    "mysql":         { "color": "#4479A1", "badge": "MySQL" },
+    "mongodb":       { "color": "#47A248", "badge": "Mongo" },
+    "redis":         { "color": "#DC382D", "badge": "Redis" },
+    "elasticsearch": { "color": "#005571", "badge": "ES" },
+    "cassandra":     { "color": "#1287B1", "badge": "CQL" },
+    "neo4j":         { "color": "#008CC1", "badge": "Neo4j" },
+    "sqlite":        { "color": "#003B57", "badge": "SQLite" },
+    "duckdb":        { "color": "#FFF000", "badge": "DuckDB", "text_dark": true }
+  },
+  "messaging": {
+    "kafka":    { "color": "#231F20", "badge": "Kafka" },
+    "rabbitmq": { "color": "#FF6600", "badge": "RMQ" },
+    "sqs":      { "color": "#FF9900", "badge": "SQS" },
+    "nats":     { "color": "#27AAE1", "badge": "NATS" },
+    "pulsar":   { "color": "#188FFF", "badge": "Pulsar" }
+  },
+  "cloud": {
+    "aws":        { "color": "#FF9900", "badge": "AWS" },
+    "gcp":        { "color": "#4285F4", "badge": "GCP" },
+    "azure":      { "color": "#0089D6", "badge": "Azure" },
+    "cloudflare": { "color": "#F48120", "badge": "CF" },
+    "vercel":     { "color": "#000000", "badge": "Vercel" },
+    "docker":     { "color": "#2496ED", "badge": "Docker" },
+    "kubernetes": { "color": "#326CE5", "badge": "K8s" },
+    "terraform":  { "color": "#7B42BC", "badge": "TF" },
+    "nginx":      { "color": "#009639", "badge": "Nginx" },
+    "fastapi":    { "color": "#009688", "badge": "FastAPI" }
+  },
+  "observability": {
+    "grafana":    { "color": "#F46800", "badge": "Grafana" },
+    "prometheus": { "color": "#E6522C", "badge": "Prom" },
+    "datadog":    { "color": "#632CA6", "badge": "DD" },
+    "langsmith":  { "color": "#1C3C3C", "badge": "LSmith" },
+    "langfuse":   { "color": "#6366F1", "badge": "LFuse" },
+    "arize":      { "color": "#6B48FF", "badge": "Arize" }
+  },
+  "sizing": {
+    "badge_inside_box":    { "radius": 14, "padding": 10 },
+    "standalone_node":     { "radius": 20, "padding": 16 },
+    "hero_central_node":   { "radius": 28, "padding": 20 },
+    "inline_indicator":    { "radius": 8,  "padding": 6 }
+  }
+}

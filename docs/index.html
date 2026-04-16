@@ -37,7 +37,7 @@ footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #222; color:
 <body>
 <h1>Claude Skills</h1>
 <p class="subtitle">可重用的 Claude CLI 技能包分享平台</p>
-<p class="stats">14 skills | Generated 2026-04-16</p>
+<p class="stats">16 skills | Generated 2026-04-16</p>
 
 <div class="install">
 <h2>Quick Install</h2>
@@ -53,6 +53,23 @@ footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #222; color:
   <div class="meta"><span class="tag">image</span> <span class="tag">gemini</span> <span class="tag">ai</span></div>
   <div class="env">需要: GEMINI_API_KEY</div>
   <code>install.sh install generate-image</code>
+</div>
+</div>
+<h2 class="cat">視覺化 / 文件</h2>
+<div class="grid">
+<div class="card">
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/architecture-diagram/SKILL.md">architecture-diagram</a> <span class="ver">v1.1.0</span></h3>
+  <p>Generate self-contained HTML architecture diagrams (inline SVG, dark theme, no JS) for blogs/READMEs. Triggers on system architecture, microservices, cloud/AWS/GCP, K8s, network topology, data flow diagrams. Use `drawio` instead when the output needs to be editable.</p>
+  <div class="meta"><span class="tag">diagram</span> <span class="tag">architecture</span> <span class="tag">svg</span> <span class="tag">html</span> <span class="tag">blog</span> <span class="tag">documentation</span></div>
+  
+  <code>install.sh install architecture-diagram</code>
+</div>
+<div class="card">
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/drawio/SKILL.md">drawio</a> <span class="ver">v1.0.0</span></h3>
+  <p>Generate draw.io diagrams (.drawio files) with optional PNG/SVG/PDF export. Triggers on diagram/flowchart/ER/sequence/class/network/architecture/wireframe/mockup/UI sketch requests.</p>
+  <div class="meta"><span class="tag">diagram</span> <span class="tag">drawio</span> <span class="tag">visualization</span> <span class="tag">documentation</span> <span class="tag">svg</span> <span class="tag">png</span></div>
+  
+  <code>install.sh install drawio</code>
 </div>
 </div>
 <h2 class="cat">資料分析</h2>

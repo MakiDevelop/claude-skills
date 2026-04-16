@@ -20,6 +20,13 @@ def build_site():
         "image": "AI / 圖像生成",
         "gemini": "AI / 圖像生成",
         "ai": "AI / 圖像生成",
+        "diagram": "視覺化 / 文件",
+        "drawio": "視覺化 / 文件",
+        "architecture": "視覺化 / 文件",
+        "svg": "視覺化 / 文件",
+        "html": "視覺化 / 文件",
+        "blog": "視覺化 / 文件",
+        "documentation": "視覺化 / 文件",
         "data": "資料分析",
         "visualization": "資料分析",
         "database": "資料分析",
@@ -60,7 +67,7 @@ def build_site():
 
     # 生成 HTML
     cards_html = ""
-    for cat_name in ["AI / 圖像生成", "資料分析", "開發工具", "職涯 / 溝通", "系統維護", "其他"]:
+    for cat_name in ["AI / 圖像生成", "視覺化 / 文件", "資料分析", "開發工具", "職涯 / 溝通", "系統維護", "其他"]:
         cat_skills = categories.get(cat_name, [])
         if not cat_skills:
             continue
