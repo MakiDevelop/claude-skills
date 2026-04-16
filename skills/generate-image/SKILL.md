@@ -27,7 +27,7 @@ python3 -c "
 import os
 key = os.environ.get('GEMINI_API_KEY') or os.environ.get('GOOGLE_API_KEY') or ''
 if key:
-    print(f'KEY_FOUND:{key[:8]}...')
+    print('KEY_FOUND')
 else:
     print('KEY_NOT_FOUND')
 "

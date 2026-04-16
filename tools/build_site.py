@@ -2,6 +2,7 @@
 """從 registry.json 生成靜態 catalog site（docs/index.html）。"""
 
 import json
+from html import escape
 from pathlib import Path
 from datetime import datetime
 
@@ -63,19 +64,23 @@ def build_site():
         cat_skills = categories.get(cat_name, [])
         if not cat_skills:
             continue
-        cards_html += f'<h2 class="cat">{cat_name}</h2>\n<div class="grid">\n'
+        cards_html += f'<h2 class="cat">{escape(cat_name)}</h2>\n<div class="grid">\n'
         for s in cat_skills:
-            tags_html = " ".join(f'<span class="tag">{t}</span>' for t in s["tags"])
+            tags_html = " ".join(f'<span class="tag">{escape(t)}</span>' for t in s["tags"])
             env_html = ""
             if s["required_env"]:
-                env_html = f'<div class="env">需要: {", ".join(s["required_env"])}</div>'
-            desc = s["description"].split("。")[0] + "。" if "。" in s["description"] else s["description"]
+                env_html = f'<div class="env">需要: {escape(", ".join(s["required_env"]))}</div>'
+            raw_desc = s["description"]
+            desc = escape(raw_desc.split("。")[0] + "。" if "。" in raw_desc else raw_desc)
+            name_esc = escape(s["name"])
+            ver_esc = escape(s["version"])
+            path_esc = escape(s["path"])
             cards_html += f"""<div class="card">
-  <h3><a href="{REPO_URL}/blob/main/{s['path']}">{s['name']}</a> <span class="ver">v{s['version']}</span></h3>
+  <h3><a href="{REPO_URL}/blob/main/{path_esc}">{name_esc}</a> <span class="ver">v{ver_esc}</span></h3>
   <p>{desc}</p>
   <div class="meta">{tags_html}</div>
   {env_html}
-  <code>install.sh install {s['name']}</code>
+  <code>install.sh install {name_esc}</code>
 </div>
 """
         cards_html += "</div>\n"

@@ -101,8 +101,12 @@ def validate_skill(skill_dir: Path) -> list[ValidationError]:
     # 11. 內容檢查：有沒有 hardcode credential
     content = skill_md.read_text(encoding="utf-8")
     cred_patterns = [
-        r'["\'](?:sk-|ghp_|gho_|AIza)[A-Za-z0-9_-]{20,}["\']',
-        r'(?:password|secret|token)\s*=\s*["\'][^"\']{10,}["\']',
+        r'(?:sk-|ghp_|gho_|AIza)[A-Za-z0-9_-]{20,}',
+        r'AKIA[0-9A-Z]{16}',
+        r'xox[bpras]-[0-9A-Za-z-]{10,}',
+        r'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY',
+        r'(?:password|secret|token|api_key|access_key|private_key|credential)\s*=\s*["\'](?!your|example|change|insert|replace)[^"\']{10,}["\']',
+        r'(?:postgresql|mysql|mongodb(?:\+srv)?|redis)://[^@\s]{3,}@',
     ]
     for pattern in cred_patterns:
         if re.search(pattern, content, re.IGNORECASE):

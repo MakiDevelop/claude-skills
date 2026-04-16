@@ -24,6 +24,13 @@ EOF
 
 install_skill() {
     local name="$1"
+
+    # Guard against path traversal (e.g. "../../.ssh/keys")
+    if [[ "$name" == */* ]] || [[ "$name" == *..* ]]; then
+        echo "Error: invalid skill name '$name' (must not contain / or ..)"
+        exit 1
+    fi
+
     local src="$SKILLS_DIR/$name"
     local dst="$TARGET_DIR/$name"
 
@@ -51,6 +58,13 @@ install_skill() {
 
 remove_skill() {
     local name="$1"
+
+    # Guard against path traversal
+    if [[ "$name" == */* ]] || [[ "$name" == *..* ]]; then
+        echo "Error: invalid skill name '$name' (must not contain / or ..)"
+        exit 1
+    fi
+
     local dst="$TARGET_DIR/$name"
 
     if [ -L "$dst" ]; then
@@ -107,7 +121,11 @@ update_skills() {
         if [[ "$target" == "$SKILLS_DIR"* ]]; then
             local name
             name=$(basename "$dir")
-            install_skill "$name"
+            if [ -d "$SKILLS_DIR/$name" ]; then
+                install_skill "$name"
+            else
+                echo "Warning: '$name' no longer exists in repo; skipping (symlink left in place)"
+            fi
         fi
     done
     echo "Done."
