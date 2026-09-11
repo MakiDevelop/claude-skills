@@ -1,5 +1,7 @@
 # Claude Skills
 
+> **Status (2026-09-11):** This public catalog is **frozen**. Packs here are not kept in lockstep with later private / department skill labs. Treat this repo as a snapshot; do not expect new skills here.
+
 > Power-ups for Claude Code.
 
 ![Validate Skills](https://github.com/MakiDevelop/claude-skills/actions/workflows/validate.yml/badge.svg)
