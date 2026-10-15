@@ -2,20 +2,25 @@ name: Validate Skills
 
 on:
   push:
-    paths: ['skills/**', 'tools/validate.py']
+    paths: ['skills/**', 'tools/validate.py', 'tests/**', '.github/workflows/validate.yml']
   pull_request:
-    paths: ['skills/**']
+    paths: ['skills/**', 'tools/validate.py', 'tests/**', '.github/workflows/validate.yml']
 
 jobs:
   validate:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: pip install pyyaml
+      - run: python -m pip install pyyaml duckdb
       - run: python tools/validate.py
+      - run: python -c "import duckdb; print('DuckDB', duckdb.__version__)"
+      - run: python -m unittest discover -s tests -v
 
   build-registry:
     runs-on: ubuntu-latest

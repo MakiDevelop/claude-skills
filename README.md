@@ -109,10 +109,11 @@ The regression suite checks malformed metadata, bounded SQLite queries, JSONL
 errors and image response handling. DuckDB tests cover full-data aggregation and
 external-access restrictions; they are skipped if DuckDB is absent.
 
-Existing CI validates skill metadata on matching pull requests. It rebuilds
-`registry.json` and `docs/index.html` after matching pushes to main.
-**That CI does not run the regression suite or live image/API/PDF/render tests.**
-A green metadata check is not proof that every workflow has been executed.
+CI validates metadata and bundled Python syntax, then runs the regression suite
+on matching pushes and pull requests. The job installs DuckDB and verifies its
+import so the DuckDB integration cases execute rather than skip. It rebuilds
+`registry.json` and `docs/index.html` after successful matching pushes to main.
+Live image/API/PDF/render tests still require separate environment-specific checks.
 
 Scripts live inside their skill directories so copying or symlinking a complete
 pack retains its implementation. Pass inputs through files/arguments, never by
