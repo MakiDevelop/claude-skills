@@ -5,7 +5,7 @@
   "skills": [
     {
       "name": "architecture-diagram",
-      "description": "Generate self-contained HTML architecture diagrams (inline SVG, dark theme, no JS) for blogs/READMEs. Triggers on system architecture, microservices, cloud/AWS/GCP, K8s, network topology, data flow diagrams. Use `drawio` instead when the output needs to be editable.",
+      "description": "Create offline HTML/SVG architecture diagrams for systems, AI agents and cloud data flows. Use drawio when an editable diagram is needed.",
       "version": "1.2.0",
       "author": "Cocoon AI (adapted by Maki)",
       "tags": [

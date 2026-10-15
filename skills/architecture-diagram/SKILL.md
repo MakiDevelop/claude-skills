@@ -1,6 +1,6 @@
 ---
 name: architecture-diagram
-description: Generate self-contained HTML architecture diagrams (inline SVG, dark theme, no JS) for blogs/READMEs. Triggers on system architecture, microservices, cloud/AWS/GCP, K8s, network topology, data flow diagrams. Use `drawio` instead when the output needs to be editable.
+description: Create offline HTML/SVG architecture diagrams for systems, AI agents and cloud data flows. Use drawio when an editable diagram is needed.
 argument-hint: "[system description or .md path] [--output path.html]"
 allowed-tools: Read, Write, Bash
 author: "Cocoon AI (adapted by Maki)"
