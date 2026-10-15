@@ -1,12 +1,12 @@
 {
   "version": "1.0",
-  "generated_at": "2026-04-16T03:18:27.963830+00:00",
-  "skill_count": 16,
+  "generated_at": "2026-10-15T15:29:14+00:00",
+  "skill_count": 19,
   "skills": [
     {
       "name": "architecture-diagram",
       "description": "Generate self-contained HTML architecture diagrams (inline SVG, dark theme, no JS) for blogs/READMEs. Triggers on system architecture, microservices, cloud/AWS/GCP, K8s, network topology, data flow diagrams. Use `drawio` instead when the output needs to be editable.",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "author": "Cocoon AI (adapted by Maki)",
       "tags": [
         "diagram",
@@ -29,7 +29,7 @@
     {
       "name": "case-study",
       "description": "專案案例包裝。把真實專案包裝成面試/LinkedIn 用的結構化案例（問題→方案→架構→Tech Stack→成果→展示重點）。當用戶說「包裝案例」「寫 case study」「面試用的案例」時使用。",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": "Maki",
       "tags": [
         "career",
@@ -49,8 +49,8 @@
     },
     {
       "name": "csv-to-chart",
-      "description": "把 CSV/TSV 資料自動生成圖表（line/bar/pie/scatter）。當用戶說「畫圖表」「csv 圖表」「chart」「visualize data」時使用。",
-      "version": "1.0.0",
+      "description": "Turn CSV/TSV data into a line, bar, pie or scatter chart. Use for chart, visualize data, or CSV 圖表 requests.",
+      "version": "1.1.0",
       "author": "Maki",
       "tags": [
         "data",
@@ -59,19 +59,21 @@
         "csv"
       ],
       "required_env": [],
-      "required_bins": [],
+      "required_bins": [
+        "python3"
+      ],
       "platforms": [
         "macos",
         "linux",
         "windows"
       ],
-      "safety_level": "safe",
+      "safety_level": "cautious",
       "path": "skills/csv-to-chart/SKILL.md"
     },
     {
       "name": "cv-optimize",
       "description": "Resume/CV optimization. Analyze a resume, reposition strengths, and produce an optimized PDF tailored to a target role.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": "Maki",
       "tags": [
         "career",
@@ -93,8 +95,8 @@
     },
     {
       "name": "db-eda",
-      "description": "用自然語言查詢 SQLite 或 DuckDB 資料庫。當用戶說「查資料庫」「SQL 查詢」「db eda」「自然語言查 DB」時使用。",
-      "version": "1.0.0",
+      "description": "Query a local SQLite or DuckDB database from a natural-language question. Use for SQL 查詢, database exploration or db eda.",
+      "version": "1.1.0",
       "author": "Maki",
       "tags": [
         "database",
@@ -104,19 +106,21 @@
         "data"
       ],
       "required_env": [],
-      "required_bins": [],
+      "required_bins": [
+        "python3"
+      ],
       "platforms": [
         "macos",
         "linux",
         "windows"
       ],
-      "safety_level": "safe",
+      "safety_level": "cautious",
       "path": "skills/db-eda/SKILL.md"
     },
     {
       "name": "demo-storytelling",
       "description": "把 PoC / prototype 包裝成有說服力的 demo 故事。輸入技術成果/受眾/數據，輸出 demo 腳本 + 一頁摘要 + FAQ。當用戶要展示成果、準備 demo、報告 PoC 時使用。",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": "Maki",
       "tags": [
         "presentation",
@@ -137,7 +141,7 @@
     {
       "name": "disk-cleanup",
       "description": "macOS 磁碟清理。掃描大目錄、分類可刪/可搬/需確認、Docker/Xcode 清理。當用戶說「清磁碟」「磁碟空間不夠」「disk cleanup」時使用。",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": "Maki",
       "tags": [
         "macos",
@@ -148,17 +152,15 @@
       "required_env": [],
       "required_bins": [],
       "platforms": [
-        "macos",
-        "linux",
-        "windows"
+        "macos"
       ],
-      "safety_level": "safe",
+      "safety_level": "cautious",
       "path": "skills/disk-cleanup/SKILL.md"
     },
     {
       "name": "drawio",
       "description": "Generate draw.io diagrams (.drawio files) with optional PNG/SVG/PDF export. Triggers on diagram/flowchart/ER/sequence/class/network/architecture/wireframe/mockup/UI sketch requests.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": "Maki",
       "tags": [
         "diagram",
@@ -169,9 +171,7 @@
         "png"
       ],
       "required_env": [],
-      "required_bins": [
-        "drawio"
-      ],
+      "required_bins": [],
       "platforms": [
         "macos",
         "linux",
@@ -182,8 +182,8 @@
     },
     {
       "name": "generate-image",
-      "description": "使用 Gemini Nano Banana 2 產生圖片。當用戶說「產圖」「生成圖片」「generate image」「畫一張圖」時使用。",
-      "version": "1.0.0",
+      "description": "Generate an image with the Gemini API. Use for image generation, illustrations, or 產圖 requests.",
+      "version": "1.1.0",
       "author": "Maki",
       "tags": [
         "image",
@@ -193,19 +193,21 @@
       "required_env": [
         "GEMINI_API_KEY"
       ],
-      "required_bins": [],
+      "required_bins": [
+        "python3"
+      ],
       "platforms": [
         "macos",
         "linux",
         "windows"
       ],
-      "safety_level": "safe",
+      "safety_level": "cautious",
       "path": "skills/generate-image/SKILL.md"
     },
     {
       "name": "gh-issue-to-spec",
       "description": "把 GitHub Issue 轉成結構化技術規格文件。當用戶說「issue 轉 spec」「寫規格」「gh issue to spec」時使用。",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": "Maki",
       "tags": [
         "github",
@@ -214,7 +216,10 @@
         "development"
       ],
       "required_env": [],
-      "required_bins": [],
+      "required_bins": [
+        "gh",
+        "git"
+      ],
       "platforms": [
         "macos",
         "linux",
@@ -224,9 +229,74 @@
       "path": "skills/gh-issue-to-spec/SKILL.md"
     },
     {
+      "name": "json-validate",
+      "description": "Validate JSON or JSONL syntax, duplicate keys and optional JSON Schema. Use for invalid JSON, JSON 檢查 or payload validation.",
+      "version": "1.0.0",
+      "author": "Maki",
+      "tags": [
+        "data",
+        "json",
+        "validation",
+        "developer"
+      ],
+      "required_env": [],
+      "required_bins": [
+        "python3"
+      ],
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ],
+      "safety_level": "safe",
+      "path": "skills/json-validate/SKILL.md"
+    },
+    {
+      "name": "log-triage",
+      "description": "Triage application logs into an evidence-based timeline and diagnostic next steps. Use for log analysis, stack traces, error logs or 日誌排查.",
+      "version": "1.0.0",
+      "author": "Maki",
+      "tags": [
+        "devops",
+        "debugging",
+        "logs",
+        "incident"
+      ],
+      "required_env": [],
+      "required_bins": [],
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ],
+      "safety_level": "cautious",
+      "path": "skills/log-triage/SKILL.md"
+    },
+    {
+      "name": "markdown-link-check",
+      "description": "Check local Markdown links, images and heading anchors. Use for broken README links, Markdown link checks or 文件連結檢查.",
+      "version": "1.0.0",
+      "author": "Maki",
+      "tags": [
+        "documentation",
+        "markdown",
+        "validation",
+        "developer"
+      ],
+      "required_env": [],
+      "required_bins": [],
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ],
+      "safety_level": "safe",
+      "path": "skills/markdown-link-check/SKILL.md"
+    },
+    {
       "name": "pdf-to-summary",
       "description": "讀取 PDF 檔案，產出結構化摘要。當用戶說「摘要 PDF」「summarize PDF」「PDF 重點」「讀這份 PDF」時使用。",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": "Maki",
       "tags": [
         "pdf",
@@ -247,7 +317,7 @@
     {
       "name": "postmortem",
       "description": "事故記錄。收集資訊、分析 root cause、記錄修復步驟、防止再發。當服務出事故後使用。",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": "Maki",
       "tags": [
         "devops",
@@ -268,7 +338,7 @@
     {
       "name": "product-positioning",
       "description": "定位產品/功能的市場位置和溝通策略。輸入產品描述/目標用戶/競品，輸出 positioning statement + one-liner + elevator pitch + landing page 骨架。當用戶要介紹產品、寫 README、準備 pitch 時使用。",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": "Maki",
       "tags": [
         "product",
@@ -289,7 +359,7 @@
     {
       "name": "proposal-review",
       "description": "提案簡報結構審查。分析分頁邏輯、標題長度、內容分配，給出合併/拆分/精簡建議。當用戶說「review 這份提案」「簡報結構對不對」「幫我看一下分頁」時使用。",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": "Maki",
       "tags": [
         "presentation",
@@ -310,7 +380,7 @@
     {
       "name": "roundtable",
       "description": "Virtual expert roundtable. Multiple thinkers analyze a document with different frameworks, then synthesize consensus/disagreements/blind spots.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": "Maki",
       "tags": [
         "analysis",
@@ -331,7 +401,7 @@
     {
       "name": "vendor-eval",
       "description": "Vendor proposal evaluation. Analyze technical architecture, pricing, and market benchmarks from a proposal PDF/Doc. Output evaluation report + comparison.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": "Maki",
       "tags": [
         "business",

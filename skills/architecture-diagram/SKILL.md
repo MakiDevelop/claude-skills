@@ -4,7 +4,7 @@ description: Generate self-contained HTML architecture diagrams (inline SVG, dar
 argument-hint: "[system description or .md path] [--output path.html]"
 allowed-tools: Read, Write, Bash
 author: "Cocoon AI (adapted by Maki)"
-version: "1.1.0"
+version: "1.2.0"
 tags: [diagram, architecture, svg, html, blog, documentation]
 required_env: []
 required_bins: []
@@ -53,7 +53,7 @@ Use these semantic colors for component types:
 
 Use JetBrains Mono for all text (monospace, technical aesthetic):
 ```html
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body { font-family: 'JetBrains Mono', ui-monospace, monospace; }</style>
 ```
 
 Font sizes: 12px for component names, 9px for sublabels, 8px for annotations, 7px for tiny labels.
@@ -178,8 +178,15 @@ Copy and customize the template at `assets/template.html`. Key customization poi
 ## Output
 
 Always produce a single self-contained `.html` file with:
-- Embedded CSS (no external stylesheets except Google Fonts)
+- Embedded CSS with system font fallbacks; no remote font requests
 - Inline SVG (no external images)
 - No JavaScript required (pure CSS animations)
 
 The file should render correctly when opened directly in any modern browser.
+
+## Quality Gates
+
+- [ ] Escape labels inserted into HTML/SVG attributes and text.
+- [ ] No external fonts, scripts or images; output renders without a network.
+- [ ] Inspect for clipped labels and overlapping connectors at the target size.
+- [ ] Architecture facts trace to supplied documentation; unknown links are labeled.

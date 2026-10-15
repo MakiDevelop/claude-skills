@@ -4,7 +4,7 @@ description: 把 PoC / prototype 包裝成有說服力的 demo 故事。輸入�
 argument-hint: "[做了什麼，如 'AI 自動分類廣告素材' / '自動化報表產生器']"
 allowed-tools: Read, Grep, Glob
 author: Maki
-version: "1.0.0"
+version: "1.1.0"
 tags: [presentation, demo, storytelling, career]
 required_env: []
 ---
@@ -197,7 +197,7 @@ required_env: []
 - [ ] Pain 用情境描述，不是功能列表
 - [ ] Demo 有標記 wow moment
 - [ ] 每個 demo step 都有「說什麼」，不只有「做什麼」
-- [ ] Impact 有具體數字（不是「大幅提升」這種模糊詞）
+- [ ] Impact 數字可回查來源；無數字時使用真實定性結果或標記待補
 - [ ] 一頁摘要可以直接貼 Slack 不用修改
 - [ ] FAQ 涵蓋至少 1 個技術問題 + 1 個業務問題
 - [ ] 語調符合目標受眾（不會對老闆講 API schema）
@@ -205,6 +205,8 @@ required_env: []
 - [ ] 沒有硬數字時用代理指標，且標記 TBD
 
 ## Heuristics
+
+成果、時間、準確率與成本必須有來源；下方範例僅為寫作示意，不可當作實際成果。不得把團隊成果改成個人貢獻。
 
 ### 成功案例模式
 - 「原本 2 小時 → 現在 30 秒」→ 數字對比 hook，最容易打動非技術人

@@ -4,7 +4,7 @@ description: 專案案例包裝。把真實專案包裝成面試/LinkedIn 用的
 argument-hint: "[專案名稱或 repo 路徑]"
 allowed-tools: Read, Grep, Glob, Bash(git*), Bash(cloc*), Bash(find*), Bash(wc*)
 author: Maki
-version: "1.0.0"
+version: "1.1.0"
 tags: [career, interview, linkedin, writing]
 required_env: []
 ---
@@ -111,13 +111,13 @@ required_env: []
 - [ ] 問題描述是業務痛點，不是技術描述
 - [ ] 架構圖清晰可懂（非工程師也能看懂大致結構）
 - [ ] Tech Stack 表完整（每一層都有）
-- [ ] 成果有至少 2 個數字（沒有 = 不及格）
+- [ ] 成果數字有來源；缺少時標待補或使用可核實的定性結果，不為湊數字而編造
 - [ ] 展示重點對應市場需求（Product 思維 / Engineering / AI 實戰）
 - [ ] 沒有公司機密或敏感資訊
 
 ## Heuristics
 
 - 問題描述用「用戶/團隊遇到什麼困難」，不用「我想做一個...」
-- 成果數字優先用相對值（「降低 97%」比「從 90s 到 3s」更直覺）
+- 相對改善須附基準、測量條件與前後絕對值；沒有測量時不宣稱倍數或百分比
 - 展示重點最多 4 個，太多 = 沒重點
 - 如果專案太小不值得包裝 → 告訴用戶，建議合併到其他案例

@@ -2,6 +2,7 @@
 """Claude Skills validator — 檢查 SKILL.md frontmatter 和結構完整性。"""
 
 import sys
+import ast
 import re
 import yaml
 from pathlib import Path
@@ -28,7 +29,8 @@ def parse_frontmatter(path: Path) -> dict | None:
     if not match:
         return None
     try:
-        return yaml.safe_load(match.group(1))
+        parsed = yaml.safe_load(match.group(1))
+        return parsed if isinstance(parsed, dict) else None
     except yaml.YAMLError:
         return None
 
@@ -53,6 +55,27 @@ def validate_skill(skill_dir: Path) -> list[ValidationError]:
     for field in REQUIRED_FIELDS:
         if field not in fm:
             errors.append(ValidationError(name, "ERROR", f"Missing required field: {field}"))
+
+    # Validate types before len(), .get() consumers and registry generation.
+    for field in ("name", "description", "author", "version"):
+        if field in fm and (not isinstance(fm[field], str) or not fm[field].strip()):
+            errors.append(ValidationError(name, "ERROR", f"{field} must be a non-empty string"))
+    for field in ("tags", "required_env", "required_bins", "platforms"):
+        if field in fm and (not isinstance(fm[field], list)
+                            or any(not isinstance(item, str) or not item.strip()
+                                   for item in fm[field])):
+            errors.append(ValidationError(name, "ERROR", f"{field} must be a list of non-empty strings"))
+    tools = fm.get("allowed-tools")
+    if "allowed-tools" in fm and not (
+        (isinstance(tools, str) and tools.strip())
+        or (isinstance(tools, list) and tools
+            and all(isinstance(item, str) and item.strip() for item in tools))
+    ):
+        errors.append(ValidationError(name, "ERROR", "allowed-tools must be a non-empty string or list"))
+    if "disable-model-invocation" in fm and not isinstance(fm["disable-model-invocation"], bool):
+        errors.append(ValidationError(name, "ERROR", "disable-model-invocation must be boolean"))
+    if errors:
+        return errors
 
     # 4. name 與目錄名一致
     if fm.get("name") and fm["name"] != name:
@@ -113,6 +136,14 @@ def validate_skill(skill_dir: Path) -> list[ValidationError]:
             errors.append(ValidationError(name, "ERROR",
                 "Possible hardcoded credential detected"))
 
+    # Parse bundled Python without executing it or creating bytecode files.
+    for script in sorted(skill_dir.rglob("*.py")):
+        try:
+            ast.parse(script.read_text(encoding="utf-8"), filename=str(script))
+        except (SyntaxError, UnicodeError) as exc:
+            errors.append(ValidationError(name, "ERROR",
+                f"Invalid Python script {script.relative_to(skill_dir)}: {type(exc).__name__}"))
+
     # 12. 有 Quality Gates 段落
     if "## Quality Gates" not in content and "## Quality" not in content:
         errors.append(ValidationError(name, "WARN", "No Quality Gates section"))
@@ -128,8 +159,8 @@ def main():
 
     skill_dirs = sorted([d for d in skills_dir.iterdir() if d.is_dir()])
     if not skill_dirs:
-        print("No skills found in skills/")
-        sys.exit(0)
+        print("ERROR: No skills found in skills/")
+        sys.exit(1)
 
     total_errors = 0
     total_warns = 0

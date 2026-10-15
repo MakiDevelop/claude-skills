@@ -4,7 +4,7 @@ description: Resume/CV optimization. Analyze a resume, reposition strengths, and
 argument-hint: "<resume_file_path> [target role or company name] [emphasis points]"
 allowed-tools: Bash, Read, Write, Edit, Glob, Grep, WebSearch, Agent
 author: Maki
-version: "1.0.0"
+version: "1.1.0"
 tags: [career, resume, cv, job-search, pdf]
 required_env: []
 required_bins: [uv]
@@ -83,13 +83,13 @@ After reading the full resume, output a structured analysis:
 - Add Tech Stack tags to each role (blockquote or meta style)
 - Expand highly relevant experiences with section-label sub-blocks
 - Condense less relevant experiences to 2-4 bullets
-- Every bullet follows "Action verb + what you did + quantified result"
-- Avoid weak verbs ("participated", "assisted") → use "led", "designed", "built", "optimized"
+- Use action + contribution + verified outcome. Quantify only from supplied evidence; otherwise use a factual qualitative result and mark missing metrics.
+- Preserve the candidate's actual responsibility. Never turn participation or assistance into leadership without evidence.
 
 ### 2.3 Skills Section Rebuild
 - Remove skills irrelevant to target role
 - Group by category (e.g., AI/ML, Data, Infrastructure, Tools)
-- Ensure target role's core keywords all appear
+- Include target-role keywords only when supported by the candidate's actual experience. Mark gaps rather than inventing skills.
 
 ### 2.4 Special Sections (add when appropriate)
 - **"Why I'm right for X" highlight box**: when target is clear and emphasis points exist
@@ -100,7 +100,7 @@ After reading the full resume, output a structured analysis:
 
 ## Phase 3: Generate Optimized PDF
 
-Use `uv run --with weasyprint` to generate PDF.
+Check the existing PDF toolchain first. WeasyPrint requires Python and native rendering dependencies; it is not a zero-install guarantee. Ask before downloading packages or installing system dependencies.
 
 ### 3.1 HTML Structure
 
@@ -130,7 +130,7 @@ Element mapping:
 ### 3.3 PDF Generation
 
 ```python
-# Zero-install execution with uv
+# Run only in an approved environment with required native libraries
 uv run --with weasyprint python3 script.py
 ```
 
@@ -186,3 +186,12 @@ Primary (dark blue):
 - Table even rows:   #f8f9fa
 - Section labels:    #e8edf2
 ```
+
+## Quality Gates
+
+- [ ] Dates, employers, degrees, responsibility and metrics trace to input evidence.
+- [ ] Missing metrics remain questions or placeholders, never invented percentages.
+- [ ] HTML escapes user content and uses local assets; no remote images, fonts or CSS.
+- [ ] PDF generation does not fetch remote URLs or arbitrary local files referenced by input.
+- [ ] Inspect layout AND extract text to check reading order; do not guarantee ATS compatibility.
+- [ ] Preserve the original and use a new output path. DOCX requires a DOCX reader; do not claim direct Read support.

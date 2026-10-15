@@ -2,9 +2,9 @@
 name: vendor-eval
 description: Vendor proposal evaluation. Analyze technical architecture, pricing, and market benchmarks from a proposal PDF/Doc. Output evaluation report + comparison.
 argument-hint: "[PDF/Doc file path] [--scope 'OCR only'] [--exclude-competitor 'CompanyX']"
-allowed-tools: Read, Bash, Write, Glob, Grep, WebSearch, Agent
+allowed-tools: Read, Bash, Write, Glob, Grep, WebSearch, WebFetch, Agent
 author: Maki
-version: "1.0.0"
+version: "1.1.0"
 tags: [business, procurement, vendor, evaluation, analysis]
 required_env: []
 required_bins: []
@@ -103,7 +103,7 @@ Conduct market benchmark comparison:
 
 **Common inflation patterns:**
 - "Saves N hours of labor" ≠ direct salary savings (efficiency gain ≠ headcount reduction)
-- "AI automates 90%" → still needs human review, actual automation usually 60-70%
+- Vendor automation percentages require a workload definition, baseline, exception rate and measured human-review effort; do not substitute an invented industry average.
 - ROI counts only benefits, ignores hidden costs (training, process change, exception handling)
 
 ### Phase 3: Market Intelligence
@@ -187,11 +187,11 @@ If user specified "exclude certain competitors":
 
 ### Common Red Flags
 
-- **Reference customers have no public case studies** → strongest negotiation leverage, demand PoC
-- **Dual/multi-engine architecture** → usually marketing packaging, single engine suffices
+- **Reference customers lack public case studies** → mark unverified and request references or a PoC; absence of public evidence is not proof of a false claim.
+- **Dual/multi-engine architecture** → request measured accuracy, availability, latency and cost evidence for the additional engine.
 - **Overage fee markup >10x underlying cost** → vendor's real profit pool, must negotiate
-- **ROI claims >100% in year 1** → almost certainly inflated, deconstruct and verify
-- **"Proprietary AI" but company <50 people** → likely API wrapper, not proprietary
+- **First-year ROI claims** → verify benefits, denominator, time horizon and all costs; a high percentage alone does not prove inflation.
+- **"Proprietary AI"** → request architecture, ownership and model evidence; headcount alone cannot establish whether a model is proprietary.
 - **Security terms are just buzzword lists** → probably cloud-native built-in, not vendor-developed
 - **ERP integration "included in quote"** → confirm which ERPs, how many, cost ownership
 
@@ -202,3 +202,12 @@ If user specified "exclude certain competitors":
 3. **Overage fees matter more than annual fees** — 10% off annual saves thousands; wrong overage structure costs tens of thousands long-term
 4. **IP ownership matters more than price** — can't take anything with you when you leave = permanent lock-in
 5. **Show alternatives** — naming specific alternative vendors shows you have options
+
+## Evidence boundaries
+
+Separate vendor statements, independently verified facts, scenario assumptions
+and hypotheses. Link primary pricing sources with currency, date and billing
+units. Never guess underlying services, margins or competitor prices as facts.
+Use a sensitivity range for ROI; no fabricated market average. Do not upload a
+confidential proposal to another service or delegate its contents externally
+without user authorization. Unavailable evidence remains explicitly unverified.
