@@ -14,7 +14,8 @@ def parse_frontmatter(path: Path) -> dict | None:
     if not match:
         return None
     try:
-        return yaml.safe_load(match.group(1))
+        parsed = yaml.safe_load(match.group(1))
+        return parsed if isinstance(parsed, dict) else None
     except yaml.YAMLError:
         return None
 
@@ -33,7 +34,7 @@ def build_registry():
 
         fm = parse_frontmatter(skill_md)
         if fm is None:
-            continue
+            raise ValueError(f"Invalid mapping frontmatter: {skill_md}")
 
         skills.append({
             "name": fm.get("name", skill_dir.name),

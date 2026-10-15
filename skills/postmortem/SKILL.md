@@ -4,7 +4,7 @@ description: 事故記錄。收集資訊、分析 root cause、記錄修復步�
 argument-hint: "[事故簡述，如 '網站掛了兩小時' / 'deploy 後 API 500']"
 allowed-tools: Bash(git*), Read, Write, Grep, Glob
 author: Maki
-version: "1.0.0"
+version: "1.1.0"
 tags: [devops, incident, debugging, documentation]
 required_env: []
 ---
@@ -75,6 +75,14 @@ required_env: []
 ## Heuristics
 
 - 事故後 24 小時內記錄，記憶最清楚
-- Root cause 用 5 Whys：問五次「為什麼」才算到底
+- 以 log、時間線與重現結果查核原因；5 Whys 是可選工具，不強求五次或單一根因
 - 防止再發優先考慮自動化（人的注意力不可靠）
 - Blameless：記錄事實和流程，不指責個人
+
+## Evidence boundaries
+
+Label confirmed causes, hypotheses and unknowns separately. Cite log timestamps,
+revisions or reproducible checks. If not resolved, record status as unresolved;
+never fill the repair timeline with invented actions. Redact secrets and personal
+data before writing logs/errors.md. Incident analysis does not authorize deploys,
+restarts, commits or changes to global agent instructions.

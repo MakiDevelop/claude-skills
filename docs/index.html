@@ -37,7 +37,7 @@ footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #222; color:
 <body>
 <h1>Claude Skills</h1>
 <p class="subtitle">可重用的 Claude CLI 技能包分享平台</p>
-<p class="stats">16 skills | Generated 2026-04-16</p>
+<p class="stats">19 skills | Generated 2026-10-15</p>
 
 <div class="install">
 <h2>Quick Install</h2>
@@ -48,8 +48,8 @@ footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #222; color:
 <h2 class="cat">AI / 圖像生成</h2>
 <div class="grid">
 <div class="card">
-  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/generate-image/SKILL.md">generate-image</a> <span class="ver">v1.0.0</span></h3>
-  <p>使用 Gemini Nano Banana 2 產生圖片。</p>
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/generate-image/SKILL.md">generate-image</a> <span class="ver">v1.1.1</span></h3>
+  <p>Generate an image with the Gemini API. Use for image generation, illustrations, or 產圖 requests.</p>
   <div class="meta"><span class="tag">image</span> <span class="tag">gemini</span> <span class="tag">ai</span></div>
   <div class="env">需要: GEMINI_API_KEY</div>
   <code>install.sh install generate-image</code>
@@ -58,38 +58,52 @@ footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #222; color:
 <h2 class="cat">視覺化 / 文件</h2>
 <div class="grid">
 <div class="card">
-  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/architecture-diagram/SKILL.md">architecture-diagram</a> <span class="ver">v1.1.0</span></h3>
-  <p>Generate self-contained HTML architecture diagrams (inline SVG, dark theme, no JS) for blogs/READMEs. Triggers on system architecture, microservices, cloud/AWS/GCP, K8s, network topology, data flow diagrams. Use `drawio` instead when the output needs to be editable.</p>
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/architecture-diagram/SKILL.md">architecture-diagram</a> <span class="ver">v1.2.0</span></h3>
+  <p>Create offline HTML/SVG architecture diagrams for systems, AI agents and cloud data flows. Use drawio when an editable diagram is needed.</p>
   <div class="meta"><span class="tag">diagram</span> <span class="tag">architecture</span> <span class="tag">svg</span> <span class="tag">html</span> <span class="tag">blog</span> <span class="tag">documentation</span></div>
   
   <code>install.sh install architecture-diagram</code>
 </div>
 <div class="card">
-  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/drawio/SKILL.md">drawio</a> <span class="ver">v1.0.0</span></h3>
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/drawio/SKILL.md">drawio</a> <span class="ver">v1.1.0</span></h3>
   <p>Generate draw.io diagrams (.drawio files) with optional PNG/SVG/PDF export. Triggers on diagram/flowchart/ER/sequence/class/network/architecture/wireframe/mockup/UI sketch requests.</p>
   <div class="meta"><span class="tag">diagram</span> <span class="tag">drawio</span> <span class="tag">visualization</span> <span class="tag">documentation</span> <span class="tag">svg</span> <span class="tag">png</span></div>
   
   <code>install.sh install drawio</code>
 </div>
+<div class="card">
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/markdown-link-check/SKILL.md">markdown-link-check</a> <span class="ver">v1.0.0</span></h3>
+  <p>Check local Markdown links, images and heading anchors. Use for broken README links, Markdown link checks or 文件連結檢查.</p>
+  <div class="meta"><span class="tag">documentation</span> <span class="tag">markdown</span> <span class="tag">validation</span> <span class="tag">developer</span></div>
+  
+  <code>install.sh install markdown-link-check</code>
+</div>
 </div>
 <h2 class="cat">資料分析</h2>
 <div class="grid">
 <div class="card">
-  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/csv-to-chart/SKILL.md">csv-to-chart</a> <span class="ver">v1.0.0</span></h3>
-  <p>把 CSV/TSV 資料自動生成圖表（line/bar/pie/scatter）。</p>
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/csv-to-chart/SKILL.md">csv-to-chart</a> <span class="ver">v1.1.0</span></h3>
+  <p>Turn CSV/TSV data into a line, bar, pie or scatter chart. Use for chart, visualize data, or CSV 圖表 requests.</p>
   <div class="meta"><span class="tag">data</span> <span class="tag">visualization</span> <span class="tag">chart</span> <span class="tag">csv</span></div>
   
   <code>install.sh install csv-to-chart</code>
 </div>
 <div class="card">
-  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/db-eda/SKILL.md">db-eda</a> <span class="ver">v1.0.0</span></h3>
-  <p>用自然語言查詢 SQLite 或 DuckDB 資料庫。</p>
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/db-eda/SKILL.md">db-eda</a> <span class="ver">v1.1.0</span></h3>
+  <p>Query a local SQLite or DuckDB database from a natural-language question. Use for SQL 查詢, database exploration or db eda.</p>
   <div class="meta"><span class="tag">database</span> <span class="tag">sqlite</span> <span class="tag">duckdb</span> <span class="tag">eda</span> <span class="tag">data</span></div>
   
   <code>install.sh install db-eda</code>
 </div>
 <div class="card">
-  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/pdf-to-summary/SKILL.md">pdf-to-summary</a> <span class="ver">v1.0.0</span></h3>
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/json-validate/SKILL.md">json-validate</a> <span class="ver">v1.0.1</span></h3>
+  <p>Validate JSON or JSONL syntax, duplicate keys and optional JSON Schema. Use for invalid JSON, JSON 檢查 or payload validation.</p>
+  <div class="meta"><span class="tag">data</span> <span class="tag">json</span> <span class="tag">validation</span> <span class="tag">developer</span></div>
+  
+  <code>install.sh install json-validate</code>
+</div>
+<div class="card">
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/pdf-to-summary/SKILL.md">pdf-to-summary</a> <span class="ver">v1.1.0</span></h3>
   <p>讀取 PDF 檔案，產出結構化摘要。</p>
   <div class="meta"><span class="tag">pdf</span> <span class="tag">summary</span> <span class="tag">documentation</span> <span class="tag">reading</span></div>
   
@@ -99,14 +113,21 @@ footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #222; color:
 <h2 class="cat">開發工具</h2>
 <div class="grid">
 <div class="card">
-  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/gh-issue-to-spec/SKILL.md">gh-issue-to-spec</a> <span class="ver">v1.0.0</span></h3>
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/gh-issue-to-spec/SKILL.md">gh-issue-to-spec</a> <span class="ver">v1.1.0</span></h3>
   <p>把 GitHub Issue 轉成結構化技術規格文件。</p>
   <div class="meta"><span class="tag">github</span> <span class="tag">spec</span> <span class="tag">documentation</span> <span class="tag">development</span></div>
   
   <code>install.sh install gh-issue-to-spec</code>
 </div>
 <div class="card">
-  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/postmortem/SKILL.md">postmortem</a> <span class="ver">v1.0.0</span></h3>
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/log-triage/SKILL.md">log-triage</a> <span class="ver">v1.0.0</span></h3>
+  <p>Triage application logs into an evidence-based timeline and diagnostic next steps. Use for log analysis, stack traces, error logs or 日誌排查.</p>
+  <div class="meta"><span class="tag">devops</span> <span class="tag">debugging</span> <span class="tag">logs</span> <span class="tag">incident</span></div>
+  
+  <code>install.sh install log-triage</code>
+</div>
+<div class="card">
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/postmortem/SKILL.md">postmortem</a> <span class="ver">v1.1.0</span></h3>
   <p>事故記錄。</p>
   <div class="meta"><span class="tag">devops</span> <span class="tag">incident</span> <span class="tag">debugging</span> <span class="tag">documentation</span></div>
   
@@ -116,35 +137,35 @@ footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #222; color:
 <h2 class="cat">職涯 / 溝通</h2>
 <div class="grid">
 <div class="card">
-  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/case-study/SKILL.md">case-study</a> <span class="ver">v1.0.0</span></h3>
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/case-study/SKILL.md">case-study</a> <span class="ver">v1.1.0</span></h3>
   <p>專案案例包裝。</p>
   <div class="meta"><span class="tag">career</span> <span class="tag">interview</span> <span class="tag">linkedin</span> <span class="tag">writing</span></div>
   
   <code>install.sh install case-study</code>
 </div>
 <div class="card">
-  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/cv-optimize/SKILL.md">cv-optimize</a> <span class="ver">v1.0.0</span></h3>
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/cv-optimize/SKILL.md">cv-optimize</a> <span class="ver">v1.1.0</span></h3>
   <p>Resume/CV optimization. Analyze a resume, reposition strengths, and produce an optimized PDF tailored to a target role.</p>
   <div class="meta"><span class="tag">career</span> <span class="tag">resume</span> <span class="tag">cv</span> <span class="tag">job-search</span> <span class="tag">pdf</span></div>
   
   <code>install.sh install cv-optimize</code>
 </div>
 <div class="card">
-  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/demo-storytelling/SKILL.md">demo-storytelling</a> <span class="ver">v1.0.0</span></h3>
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/demo-storytelling/SKILL.md">demo-storytelling</a> <span class="ver">v1.1.0</span></h3>
   <p>把 PoC / prototype 包裝成有說服力的 demo 故事。</p>
   <div class="meta"><span class="tag">presentation</span> <span class="tag">demo</span> <span class="tag">storytelling</span> <span class="tag">career</span></div>
   
   <code>install.sh install demo-storytelling</code>
 </div>
 <div class="card">
-  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/product-positioning/SKILL.md">product-positioning</a> <span class="ver">v1.0.0</span></h3>
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/product-positioning/SKILL.md">product-positioning</a> <span class="ver">v1.1.0</span></h3>
   <p>定位產品/功能的市場位置和溝通策略。</p>
   <div class="meta"><span class="tag">product</span> <span class="tag">marketing</span> <span class="tag">positioning</span> <span class="tag">pitch</span></div>
   
   <code>install.sh install product-positioning</code>
 </div>
 <div class="card">
-  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/proposal-review/SKILL.md">proposal-review</a> <span class="ver">v1.0.0</span></h3>
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/proposal-review/SKILL.md">proposal-review</a> <span class="ver">v1.1.0</span></h3>
   <p>提案簡報結構審查。</p>
   <div class="meta"><span class="tag">presentation</span> <span class="tag">review</span> <span class="tag">proposal</span> <span class="tag">pptx</span></div>
   
@@ -154,7 +175,7 @@ footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #222; color:
 <h2 class="cat">系統維護</h2>
 <div class="grid">
 <div class="card">
-  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/disk-cleanup/SKILL.md">disk-cleanup</a> <span class="ver">v1.0.0</span></h3>
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/disk-cleanup/SKILL.md">disk-cleanup</a> <span class="ver">v1.1.0</span></h3>
   <p>macOS 磁碟清理。</p>
   <div class="meta"><span class="tag">macos</span> <span class="tag">devtools</span> <span class="tag">cleanup</span> <span class="tag">disk</span></div>
   
@@ -164,14 +185,14 @@ footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #222; color:
 <h2 class="cat">其他</h2>
 <div class="grid">
 <div class="card">
-  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/roundtable/SKILL.md">roundtable</a> <span class="ver">v1.0.0</span></h3>
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/roundtable/SKILL.md">roundtable</a> <span class="ver">v1.1.0</span></h3>
   <p>Virtual expert roundtable. Multiple thinkers analyze a document with different frameworks, then synthesize consensus/disagreements/blind spots.</p>
   <div class="meta"><span class="tag">analysis</span> <span class="tag">decision-making</span> <span class="tag">strategy</span> <span class="tag">multi-perspective</span></div>
   
   <code>install.sh install roundtable</code>
 </div>
 <div class="card">
-  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/vendor-eval/SKILL.md">vendor-eval</a> <span class="ver">v1.0.0</span></h3>
+  <h3><a href="https://github.com/MakiDevelop/claude-skills/blob/main/skills/vendor-eval/SKILL.md">vendor-eval</a> <span class="ver">v1.1.0</span></h3>
   <p>Vendor proposal evaluation. Analyze technical architecture, pricing, and market benchmarks from a proposal PDF/Doc. Output evaluation report + comparison.</p>
   <div class="meta"><span class="tag">business</span> <span class="tag">procurement</span> <span class="tag">vendor</span> <span class="tag">evaluation</span> <span class="tag">analysis</span></div>
   

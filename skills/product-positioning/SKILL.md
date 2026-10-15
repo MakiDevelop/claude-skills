@@ -2,9 +2,9 @@
 name: product-positioning
 description: 定位產品/功能的市場位置和溝通策略。輸入產品描述/目標用戶/競品，輸出 positioning statement + one-liner + elevator pitch + landing page 骨架。當用戶要介紹產品、寫 README、準備 pitch 時使用。
 argument-hint: "[產品名或描述，如 '匿名論壇' / 'AI 廣告素材分類器']"
-allowed-tools: Read, Grep, Glob
+allowed-tools: Read, Grep, Glob, WebSearch, WebFetch
 author: Maki
-version: "1.0.0"
+version: "1.1.0"
 tags: [product, marketing, positioning, pitch]
 required_env: []
 ---
@@ -51,7 +51,7 @@ required_env: []
 ### Step 2: 競品 / 替代方案掃描
 
 搜尋關鍵字：
-- `{產品類別} tools 2026` — 看市場上有什麼
+- `{產品類別} tools {current_year}` — 看市場上有什麼
 - `{產品類別} alternatives` — 找替代方案
 - `{產品名} vs` — 看有沒有人比較過
 
@@ -215,3 +215,10 @@ Unlike {替代方案}
 - PoC → 優先用「速度」或「整合」差異化（展示你能快速串接）
 - 有明確數字 → 放進 one-liner（「30 秒完成原本 2 小時的工作」）
 - 不確定品類 → 用「像 X 但 Y」公式，最容易讓人理解
+
+## Evidence boundaries
+
+Use the actual current year. Cite dated primary sources for competitors, pricing
+and market claims. If browsing is unavailable, label the comparison unverified
+and use only supplied facts. Product ideas without a prototype may still be
+positioned as hypotheses; do not represent them as validated capabilities.
