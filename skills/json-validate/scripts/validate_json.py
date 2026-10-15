@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Strict JSON/JSONL syntax checks; does not perform JSON Schema validation."""
 import argparse
+from decimal import Decimal, InvalidOperation
 import json
 from pathlib import Path
 import sys
@@ -20,9 +21,19 @@ def reject_constant(value):
     raise ValueError("Nonstandard numeric constant")
 
 
+def decimal_number(value):
+    try:
+        number = Decimal(value)
+    except InvalidOperation as exc:
+        raise ValueError("Numeric exponent exceeds decimal parser range") from exc
+    if not number.is_finite():
+        raise ValueError("Nonfinite numeric value")
+    return number
+
+
 def parse(text):
     return json.loads(text, object_pairs_hook=unique_object,
-                      parse_constant=reject_constant)
+                      parse_constant=reject_constant, parse_float=decimal_number)
 
 
 def validate(path, jsonl=False):

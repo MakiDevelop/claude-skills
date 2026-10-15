@@ -4,7 +4,7 @@ description: Validate JSON or JSONL syntax, duplicate keys and optional JSON Sch
 argument-hint: "[JSON/JSONL path] [optional local schema path]"
 allowed-tools: Read, Bash(python3*)
 author: Maki
-version: "1.0.0"
+version: "1.0.1"
 tags: [data, json, validation, developer]
 required_env: []
 required_bins: [python3]
@@ -27,6 +27,7 @@ safety_level: safe
    ```
 
    The script rejects duplicate object keys and nonstandard NaN/Infinity.
+   Decimal parsing preserves large finite exponents such as 1e999 without float overflow.
    For JSONL, errors use physical file line numbers. Blank lines are rejected.
    JSON documents are loaded in memory; JSONL is streamed one line at a time.
 3. If a local JSON Schema was supplied, first run syntax validation for both files.

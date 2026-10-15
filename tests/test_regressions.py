@@ -87,6 +87,11 @@ class JsonTests(unittest.TestCase):
             with self.subTest(text=text), self.assertRaises(ValueError):
                 strict_json.parse(text)
 
+    def test_large_finite_exponent_does_not_overflow(self):
+        value = strict_json.parse('{"value": 1e999}')["value"]
+        self.assertTrue(value.is_finite())
+        self.assertEqual(str(value), "1E+999")
+
     def test_jsonl_physical_line_and_no_schema_claim(self):
         with tempfile.TemporaryDirectory() as temp:
             path = Path(temp) / "data.jsonl"
@@ -106,6 +111,12 @@ class ImageTests(unittest.TestCase):
                             "data": base64.b64encode(b"image").decode()}}
         ]}}]}
         self.assertEqual(image.first_image(result), (b"image", ".jpg"))
+
+    def test_malformed_image_fields_fail_cleanly(self):
+        for parts in (None, "invalid", [{"inlineData": "invalid"}],
+                      [{"inlineData": {"mimeType": "image/png", "data": []}}]):
+            with self.subTest(parts=parts), self.assertRaises(ValueError):
+                image.first_image({"candidates": [{"content": {"parts": parts}}]})
 
     def test_no_image_or_bad_base64_fails(self):
         with self.assertRaises(ValueError):

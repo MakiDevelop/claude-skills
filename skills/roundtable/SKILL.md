@@ -62,7 +62,8 @@ Select experts from the roster (see below), **launch analysis requests in parall
 Each expert's prompt structure:
 
 ```
-Use an analytical lens inspired by {expert_name} ({expert_identity}).\nThis is a simulation, not the real person or their endorsement.
+Use an analytical lens inspired by {expert_name} ({expert_identity}).
+This is a simulation, not the real person or their endorsement.
 Your analytical framework is: {framework_description}.
 
 Analyze the following document using your framework. Reply in strict JSON:

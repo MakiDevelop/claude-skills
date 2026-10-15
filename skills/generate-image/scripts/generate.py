@@ -21,12 +21,17 @@ def first_image(result):
     for candidate in result.get("candidates", []):
         if not isinstance(candidate, dict) or not isinstance(candidate.get("content", {}), dict):
             continue
-        for part in candidate.get("content", {}).get("parts", []):
+        parts = candidate.get("content", {}).get("parts", [])
+        if not isinstance(parts, list):
+            raise ValueError("Invalid provider image parts")
+        for part in parts:
             if not isinstance(part, dict):
                 continue
             inline = part.get("inlineData")
             if not inline:
                 continue
+            if not isinstance(inline, dict) or not isinstance(inline.get("data"), str):
+                raise ValueError("Invalid inline image data")
             mime = inline.get("mimeType")
             if mime not in EXTENSIONS:
                 raise ValueError("Unsupported image MIME type")

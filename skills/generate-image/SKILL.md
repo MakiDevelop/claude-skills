@@ -4,7 +4,7 @@ description: Generate an image with the Gemini API. Use for image generation, il
 argument-hint: "[image description]"
 allowed-tools: Bash(python3*), Read, Write
 author: Maki
-version: "1.1.0"
+version: "1.1.1"
 tags: [image, gemini, ai]
 required_env: [GEMINI_API_KEY]
 required_bins: [python3]
